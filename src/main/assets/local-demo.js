@@ -44,24 +44,21 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	;__weex_define__("@weex-component/fbf11910b018341d4b4a270e96ff1a0b", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/2494851eeab8598c27ff83ab9195bf2c", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;__weex_module__.exports.template={
 	  "type": "div",
 	  "children": [
 	    {
 	      "type": "text",
-	      "style": {
-	        "fontSize": 100
-	      },
 	      "attr": {
-	        "value": "Hello World."
+	        "value": "ok"
 	      }
 	    }
 	  ]
 	}
 	})
-	;__weex_bootstrap__("@weex-component/fbf11910b018341d4b4a270e96ff1a0b", {"transformerVersion":"0.3.1"}, undefined)
+	;__weex_bootstrap__("@weex-component/2494851eeab8598c27ff83ab9195bf2c", {"transformerVersion":"0.3.1"}, undefined)
 
 /***/ }
 /******/ ]);

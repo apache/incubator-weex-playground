@@ -44,24 +44,36 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	;__weex_define__("@weex-component/fbf11910b018341d4b4a270e96ff1a0b", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/de562f46a417f3110ded06161e4a46db", [], function(__weex_require__, __weex_exports__, __weex_module__){
+
+	;
+	  __weex_module__.exports = {
+	    methods: {
+	      clicked: function() {
+	        this.$call('modal', 'toast', {'message': 'clicked!'});
+	      }  
+	    }
+	  }
 
 	;__weex_module__.exports.template={
-	  "type": "div",
+	  "type": "container",
 	  "children": [
 	    {
-	      "type": "text",
-	      "style": {
-	        "fontSize": 100
-	      },
+	      "type": "foo",
+	      "events": {
+	        "click": "clicked"
+	      }
+	    },
+	    {
+	      "type": "bar",
 	      "attr": {
-	        "value": "Hello World."
+	        "click": function () {return this.clicked}
 	      }
 	    }
 	  ]
 	}
 	})
-	;__weex_bootstrap__("@weex-component/fbf11910b018341d4b4a270e96ff1a0b", {"transformerVersion":"0.3.1"}, undefined)
+	;__weex_bootstrap__("@weex-component/de562f46a417f3110ded06161e4a46db", {"transformerVersion":"0.3.1"}, undefined)
 
 /***/ }
 /******/ ]);

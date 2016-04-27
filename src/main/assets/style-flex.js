@@ -44,24 +44,56 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	;__weex_define__("@weex-component/fbf11910b018341d4b4a270e96ff1a0b", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/3c282e90eb46eefb2b38a7428894132f", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;__weex_module__.exports.template={
-	  "type": "div",
+	  "type": "scroller",
 	  "children": [
 	    {
-	      "type": "text",
-	      "style": {
-	        "fontSize": 100
-	      },
+	      "type": "ui-panel",
 	      "attr": {
-	        "value": "Hello World."
-	      }
+	        "title": "Box Model",
+	        "type": "primary"
+	      },
+	      "children": [
+	        {
+	          "type": "text",
+	          "classList": [
+	            "txt"
+	          ],
+	          "attr": {
+	            "value": "default is black"
+	          }
+	        }
+	      ]
+	    },
+	    {
+	      "type": "ui-panel",
+	      "attr": {
+	        "title": "Flexbox"
+	      },
+	      "children": [
+	        {
+	          "type": "text",
+	          "classList": [
+	            "txt"
+	          ],
+	          "attr": {
+	            "value": "default is black"
+	          }
+	        }
+	      ]
 	    }
 	  ]
 	}
+	;__weex_module__.exports.style={
+	  "txt": {
+	    "marginBottom": 12,
+	    "fontSize": 40
+	  }
+	}
 	})
-	;__weex_bootstrap__("@weex-component/fbf11910b018341d4b4a270e96ff1a0b", {"transformerVersion":"0.3.1"}, undefined)
+	;__weex_bootstrap__("@weex-component/3c282e90eb46eefb2b38a7428894132f", {"transformerVersion":"0.3.1"}, undefined)
 
 /***/ }
 /******/ ]);
