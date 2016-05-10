@@ -1,8 +1,7 @@
-package com.alibaba.weex.util;
+package com.alibaba.weex;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Environment;
@@ -34,22 +33,11 @@ public  class ScreenShot {
         int width = activity.getWindowManager().getDefaultDisplay().getWidth();
         int height = activity.getWindowManager().getDefaultDisplay().getHeight();
 
-        int baseWidth = 750;
-//        int baseHeight = height;
-
-        // 计算缩放因子
-//        float heightScale = ((float) baseHeight) / height;
-        float widthScale = ((float) baseWidth) / width;
-
-        // 新建立矩阵 按照宽度缩放因子自适应缩放
-        Matrix matrix = new Matrix();
-        matrix.postScale(widthScale, widthScale);
-
         int actionBarHeight = getActionBarHeight(activity);
         Log.e("actionBarHeight==", "actionBarHeight==" + actionBarHeight);
 
         Bitmap b = Bitmap.createBitmap(bitmap, 0, statusBarHeight + actionBarHeight, width,
-                height - statusBarHeight - actionBarHeight, matrix, true);
+                height - statusBarHeight - actionBarHeight);
         view.destroyDrawingCache();
         return b;
     }
@@ -103,11 +91,7 @@ public  class ScreenShot {
     }
 
     public static void shoot(Activity activity, String pathName) throws IOException {
-
-        if(SdCardHelper.isHasSdcard()){
-            ScreenShot.saveToSD(ScreenShot.takeScreenShot(activity), SdCardHelper.SDCardRoot + "WeexTest/ScreenShot/", pathName /*+System.currentTimeMillis()*/ + ".png");
-
-        }
+        ScreenShot.saveToSD(ScreenShot.takeScreenShot(activity), "sdcard/WeexTest/ScreenShot/", pathName /*+System.currentTimeMillis()*/ + ".png");
 
     }
 
@@ -120,12 +104,13 @@ public  class ScreenShot {
         if (Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
 
-            File dir = new File(SdCardHelper.SDCardRoot +"WeexTest/ScreenShot/");
+            File dir = new File("sdcard/WeexTest/ScreenShot/");
             if(!dir.exists()){
                 dir.mkdirs();
             }
 
-            File filePic = new File(SdCardHelper.SDCardRoot + "WeexTest/ScreenShot/"+ file + ".png");
+
+            File filePic = new File("sdcard/WeexTest/ScreenShot/"+ file);
             if (!filePic.exists()) {
                 try {
                     filePic.createNewFile();
@@ -133,7 +118,9 @@ public  class ScreenShot {
                     e.printStackTrace();
                 }
             }
+
             Falcon.takeScreenshot(activity, filePic);
+
 
         }
 
@@ -167,6 +154,13 @@ public  class ScreenShot {
     }
 
     public  static int getStatusBarHeight1(Activity activity){
+//        Rect rectgle= new Rect();
+//        Window window= activity.getWindow();
+//        window.getDecorView().getWindowVisibleDisplayFrame(rectgle);
+//        int StatusBarHeight= rectgle.top;
+//        int contentViewTop=
+//                window.findViewById(Window.ID_ANDROID_CONTENT).getTop();
+//        int TitleBarHeight= contentViewTop - StatusBarHeight;
         int result = 0;
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
@@ -176,6 +170,7 @@ public  class ScreenShot {
         Log.e("StatusBarHeight==", "StatusBar Height= " + result);
 
         return result;
+//        return StatusBarHeight;
     }
     public static  int getStatusBarHeight(Activity activity) {
         int result = 0;
@@ -194,6 +189,8 @@ public  class ScreenShot {
             int result4 = display.getHeight() - v.getHeight();
 
             Log.e("StatusBarHeight==", "result1== " + result1 +" result2 = " + result2 + "result3=" + result3 + "result4=" +result4  ) ;
+
+
         }
         return result;
 
