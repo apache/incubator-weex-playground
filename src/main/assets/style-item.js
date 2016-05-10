@@ -44,61 +44,57 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	;__weex_define__("@weex-component/74232bd69aed1b57a50e49e39e9b540e", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/b47922e178c802e32fe49b4657b40ee2", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __weex_module__.exports = {
 	    data: function () {return {
-	      bgColor: '#ffffff',
-	      click: function() {
-	      }
+	      value: '',
+	      type: '0' // 0, 1
 	    }},
 	    methods: {
-	      touchstart: function() {
-	        // FIXME android touch
-	        // TODO adaptive opposite bgColor
-	//        this.bgColor = '#e6e6e6';
+	      ready: function() {
+	        // TODO issue why undefined?
+	        console.log(this.data);
 	      },
-	      touchend: function() {
-	        // FIXME android touchend not triggered
-	//        this.bgColor = '#ffffff';
+	      bgColor: function() {
+	        return this.type == '1' ? '#BEAD92' : '#7BA3A8';
 	      }
 	    }
 	  }
 
 	;__weex_module__.exports.template={
-	  "type": "div",
+	  "type": "text",
 	  "classList": [
-	    "item"
+	    "item",
+	    "txt"
 	  ],
-	  "events": {
-	    "click": "click",
-	    "touchstart": "touchstart",
-	    "touchend": "touchend"
+	  "attr": {
+	    "value": function () {return this.value}
 	  },
 	  "style": {
-	    "backgroundColor": function () {return this.bgColor}
-	  },
-	  "children": [
-	    {
-	      "type": "content"
-	    }
-	  ]
+	    "backgroundColor": function () {return this.bgColor()}
+	  }
 	}
 	;__weex_module__.exports.style={
 	  "item": {
-	    "paddingTop": 25,
-	    "paddingBottom": 25,
-	    "paddingLeft": 35,
-	    "paddingRight": 35,
-	    "height": 160,
-	    "justifyContent": "center",
-	    "borderBottomWidth": 1,
-	    "borderColor": "#dddddd"
+	    "marginRight": 10,
+	    "marginBottom": 10,
+	    "width": 160,
+	    "height": 75,
+	    "paddingLeft": 8,
+	    "paddingRight": 8,
+	    "paddingTop": 8,
+	    "paddingBottom": 8
+	  },
+	  "txt": {
+	    "color": "#eeeeee"
 	  }
 	}
 	})
-	;__weex_bootstrap__("@weex-component/74232bd69aed1b57a50e49e39e9b540e", {"transformerVersion":"0.3.1"}, undefined)
+	;__weex_bootstrap__("@weex-component/b47922e178c802e32fe49b4657b40ee2", {
+	  "transformerVersion": "0.3.1"
+	},undefined)
 
 /***/ }
 /******/ ]);
