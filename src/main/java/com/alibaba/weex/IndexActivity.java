@@ -24,7 +24,7 @@ import com.taobao.weex.WXRenderErrorCode;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.utils.WXFileUtils;
 
-public class WXMainActivity extends AbstractWeexActivity {
+public class IndexActivity extends AbstractWeexActivity {
 
   private static final int CAMARA_PERMISSION_REQUEST_CODE = 0x1;
 
@@ -40,8 +40,7 @@ public class WXMainActivity extends AbstractWeexActivity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_wx_main);
-
+    setContentView(R.layout.activity_index);
     setContainer((ViewGroup) findViewById(R.id.index_container));
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     toolbar.setTitle("WEEX");

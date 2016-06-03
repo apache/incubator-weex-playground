@@ -1,4 +1,4 @@
-package com.alibaba.weex.extend.Modules;
+package com.alibaba.weex.extend.module;
 
 import android.util.Log;
 
