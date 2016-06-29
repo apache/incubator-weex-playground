@@ -44,62 +44,17 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/8c52e29db533f7648b56d547ec8c14f3", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/f5b494ee9290791747229537a342cceb", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(1);
 	  __weex_module__.exports = {
-	    data: function () {return {}},
+	    data: function () {return {
+	      img: '//gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg'
+	    }},
 	    methods: {
-	      toast: function(msg, duration) {
-	        if (!msg || typeof msg !== 'string') {
-	          msg = 'I am Toast show!';
-	        }
-
-	        duration = duration || 2;
-	        this.$call('modal', 'toast', {
-	          'message': msg,
-	          'duration': duration
-	        });
-	      },
-	      alert: function(msg, okTitle, cancelTitle) {
-	        var self = this;
-	        if (!msg || typeof msg !== 'string') {
-	          msg = "I am Alert!";
-	        }
-	        this.$call('modal', 'alert', {
-	          'message': msg,
-	          'okTitle': okTitle,
-	          'cancelTitle': cancelTitle
-	        }, function() {
-	          self.toast("Click Alert OK Bnt!!");
-	        });
-	      },
-	      confirm: function(msg, okTitle, cancelTitle) {
-	        var self = this
-	        if (!msg || typeof msg !== 'string') {
-	          msg = "I am Confirm!";
-	        }
-
-	        okTitle = okTitle || "OK";
-	        cancelTitle = cancelTitle || "Cancel";
-	        this.$call('modal', 'confirm', {
-	          'message': msg,
-	          'okTitle': okTitle,
-	          'cancelTitle': cancelTitle
-	        }, function(result) {
-	          self.toast("Click Confirm  " + result);
-	        });
-	      },
-	      prompt: function() {
-	        var self = this;
-	        this.$call('modal', 'prompt', {
-	          'message': 'I am Prompt!',
-	          'okTitle': 'ok',
-	          'cancelTitle': 'cancel'
-	        }, function(result) {
-	          self.toast("Click Prompt  " + result);
-	        });
+	      toast: function() {
+	        this.$call('modal', 'toast', {'message': 'a toast', 'duration': 2});
 	      }
 	    }
 	  }
@@ -111,14 +66,48 @@
 	    {
 	      "type": "wxc-panel",
 	      "attr": {
-	        "title": "Toast",
+	        "title": "Dialog",
 	        "type": "primary"
 	      },
 	      "children": [
 	        {
+	          "type": "wxc-tip",
+	          "attr": {
+	            "type": "success",
+	            "value": "It's a weex example template."
+	          },
+	          "style": {
+	            "marginBottom": 20
+	          }
+	        },
+	        {
+	          "type": "wxc-hn",
+	          "attr": {
+	            "level": "1",
+	            "value": "H1"
+	          }
+	        },
+	        {
 	          "type": "wxc-button",
 	          "attr": {
 	            "type": "primary",
+	            "value": "Toast"
+	          },
+	          "events": {
+	            "click": "toast"
+	          }
+	        },
+	        {
+	          "type": "wxc-hn",
+	          "attr": {
+	            "level": "2",
+	            "value": "H3"
+	          }
+	        },
+	        {
+	          "type": "wxc-button",
+	          "attr": {
+	            "type": "warning",
 	            "value": "Toast"
 	          },
 	          "events": {
@@ -130,45 +119,47 @@
 	    {
 	      "type": "wxc-panel",
 	      "attr": {
-	        "title": "Dialog",
+	        "title": "Image",
 	        "type": "primary"
 	      },
 	      "children": [
 	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "success",
-	            "value": "Alert"
-	          },
-	          "events": {
-	            "click": "alert"
-	          },
-	          "style": {
-	            "marginBottom": 20
-	          }
-	        },
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "primary",
-	            "value": "Confirm"
-	          },
-	          "events": {
-	            "click": "confirm"
-	          },
-	          "style": {
-	            "marginBottom": 20
-	          }
-	        },
-	        {
-	          "type": "wxc-button",
+	          "type": "wxc-tip",
 	          "attr": {
 	            "type": "warning",
-	            "value": "Prompt"
+	            "value": "Weex screen width is 750"
 	          },
-	          "events": {
-	            "click": "prompt"
+	          "style": {
+	            "marginBottom": 20
 	          }
+	        },
+	        {
+	          "type": "image",
+	          "classList": [
+	            "img"
+	          ],
+	          "style": {
+	            "width": 400,
+	            "height": 400
+	          },
+	          "attr": {
+	            "src": function () {return this.img}
+	          }
+	        },
+	        {
+	          "type": "wxc-panel",
+	          "attr": {
+	            "title": "Image",
+	            "type": "default"
+	          },
+	          "children": [
+	            {
+	              "type": "text",
+	              "attr": {
+	                "value": "sub info"
+	              }
+	            }
+	          ]
 	        }
 	      ]
 	    }
@@ -177,7 +168,7 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {})
 	})
-	;__weex_bootstrap__("@weex-component/8c52e29db533f7648b56d547ec8c14f3", {
+	;__weex_bootstrap__("@weex-component/f5b494ee9290791747229537a342cceb", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 

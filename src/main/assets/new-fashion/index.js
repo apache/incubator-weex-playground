@@ -44,140 +44,83 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/8c52e29db533f7648b56d547ec8c14f3", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/f86b46b04200f60cba776a330e1e0d94", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
-	  __webpack_require__(1);
+	  __webpack_require__(1)
 	  __weex_module__.exports = {
-	    data: function () {return {}},
+	    data: function () {return {
+	      tabItems: [
+	        {
+	          index: 0,
+	          title: "会场",
+	          titleColor: 0x0,
+	          icon: "",
+	          image: "http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png",
+	          selectedImage: "http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png",
+	          src: "./examples/build/new-fashion/main.js",
+	          visibility: "visible",
+	        },
+	        {
+	          index: 1,
+	          title: "WEEX",
+	          titleColor: 0x0,
+	          icon:"",
+	          image: "http://gtms03.alicdn.com/tps/i3/TB1LEn9MpXXXXaUXpXX9t7RGVXX-46-46.png",
+	          selectedImage: "http://gtms02.alicdn.com/tps/i2/TB1qysbMpXXXXcnXXXX9t7RGVXX-46-46.png",
+	          src: "./examples/build/image-demo.js",
+	          visibility: "hidden",
+	        },
+	        {
+	          index: 2,
+	          title: "列表",
+	          titleColor: 0x0,
+	          icon:"",
+	          image: "http://gtms01.alicdn.com/tps/i1/TB1B0v5MpXXXXcvXpXX9t7RGVXX-46-46.png",
+	          selectedImage: "http://gtms04.alicdn.com/tps/i4/TB1NxY5MpXXXXcrXpXX9t7RGVXX-46-46.png",
+	          src: "./examples/build/list-demo.js",
+	          visibility: "hidden",
+	        }
+	      ],
+	    }},
 	    methods: {
-	      toast: function(msg, duration) {
-	        if (!msg || typeof msg !== 'string') {
-	          msg = 'I am Toast show!';
-	        }
-
-	        duration = duration || 2;
-	        this.$call('modal', 'toast', {
-	          'message': msg,
-	          'duration': duration
+	      ready: function (e) {
+	        var vm = this;
+	        vm.$on('tabBar.onClick',function(e){
+	          var detail= e.detail;
+	          nativeLog('tabBar.onClick ' + detail.index);
 	        });
 	      },
-	      alert: function(msg, okTitle, cancelTitle) {
-	        var self = this;
-	        if (!msg || typeof msg !== 'string') {
-	          msg = "I am Alert!";
-	        }
-	        this.$call('modal', 'alert', {
-	          'message': msg,
-	          'okTitle': okTitle,
-	          'cancelTitle': cancelTitle
-	        }, function() {
-	          self.toast("Click Alert OK Bnt!!");
-	        });
-	      },
-	      confirm: function(msg, okTitle, cancelTitle) {
-	        var self = this
-	        if (!msg || typeof msg !== 'string') {
-	          msg = "I am Confirm!";
-	        }
-
-	        okTitle = okTitle || "OK";
-	        cancelTitle = cancelTitle || "Cancel";
-	        this.$call('modal', 'confirm', {
-	          'message': msg,
-	          'okTitle': okTitle,
-	          'cancelTitle': cancelTitle
-	        }, function(result) {
-	          self.toast("Click Confirm  " + result);
-	        });
-	      },
-	      prompt: function() {
-	        var self = this;
-	        this.$call('modal', 'prompt', {
-	          'message': 'I am Prompt!',
-	          'okTitle': 'ok',
-	          'cancelTitle': 'cancel'
-	        }, function(result) {
-	          self.toast("Click Prompt  " + result);
-	        });
-	      }
 	    }
 	  }
 
 	;__weex_module__.exports.template = __weex_module__.exports.template || {}
 	;Object.assign(__weex_module__.exports.template, {
-	  "type": "scroller",
+	  "type": "div",
 	  "children": [
 	    {
-	      "type": "wxc-panel",
+	      "type": "wxc-tabbar",
+	      "classList": [
+	        "tabbar"
+	      ],
 	      "attr": {
-	        "title": "Toast",
-	        "type": "primary"
-	      },
-	      "children": [
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "primary",
-	            "value": "Toast"
-	          },
-	          "events": {
-	            "click": "toast"
-	          }
-	        }
-	      ]
-	    },
-	    {
-	      "type": "wxc-panel",
-	      "attr": {
-	        "title": "Dialog",
-	        "type": "primary"
-	      },
-	      "children": [
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "success",
-	            "value": "Alert"
-	          },
-	          "events": {
-	            "click": "alert"
-	          },
-	          "style": {
-	            "marginBottom": 20
-	          }
-	        },
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "primary",
-	            "value": "Confirm"
-	          },
-	          "events": {
-	            "click": "confirm"
-	          },
-	          "style": {
-	            "marginBottom": 20
-	          }
-	        },
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "warning",
-	            "value": "Prompt"
-	          },
-	          "events": {
-	            "click": "prompt"
-	          }
-	        }
-	      ]
+	        "tabItems": function () {return this.tabItems}
+	      }
 	    }
 	  ]
 	})
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
-	;Object.assign(__weex_module__.exports.style, {})
+	;Object.assign(__weex_module__.exports.style, {
+	  "content": {
+	    "color": "#353535",
+	    "backgroundColor": "#666666"
+	  },
+	  "tabbar": {
+	    "backgroundColor": "#ffffff"
+	  }
 	})
-	;__weex_bootstrap__("@weex-component/8c52e29db533f7648b56d547ec8c14f3", {
+	})
+	;__weex_bootstrap__("@weex-component/f86b46b04200f60cba776a330e1e0d94", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -933,7 +876,7 @@
 	    {
 	      "type": "image",
 	      "classList": [
-	        "right-image"
+	        "left-image"
 	      ],
 	      "attr": {
 	        "naviItemPosition": "right",
@@ -1028,14 +971,14 @@
 	  "left-image": {
 	    "position": "absolute",
 	    "bottom": 20,
-	    "left": 28,
+	    "right": 28,
 	    "width": 50,
 	    "height": 50
 	  },
 	  "right-image": {
 	    "position": "absolute",
 	    "bottom": 20,
-	    "right": 28,
+	    "left": 28,
 	    "width": 50,
 	    "height": 50
 	  }

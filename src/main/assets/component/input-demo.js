@@ -44,65 +44,26 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/8c52e29db533f7648b56d547ec8c14f3", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/f3da30bff5b14f03e980fa76780fac70", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(1);
 	  __weex_module__.exports = {
-	    data: function () {return {}},
+	    data: function () {return {
+	      txtInput: '',
+	      txtChange: ''
+	    }},
 	    methods: {
-	      toast: function(msg, duration) {
-	        if (!msg || typeof msg !== 'string') {
-	          msg = 'I am Toast show!';
-	        }
-
-	        duration = duration || 2;
-	        this.$call('modal', 'toast', {
-	          'message': msg,
-	          'duration': duration
-	        });
+	      onchange: function(event) {
+	        this.txtChange = event.value;
+	        console.log('onchange', event.value);
 	      },
-	      alert: function(msg, okTitle, cancelTitle) {
-	        var self = this;
-	        if (!msg || typeof msg !== 'string') {
-	          msg = "I am Alert!";
-	        }
-	        this.$call('modal', 'alert', {
-	          'message': msg,
-	          'okTitle': okTitle,
-	          'cancelTitle': cancelTitle
-	        }, function() {
-	          self.toast("Click Alert OK Bnt!!");
-	        });
-	      },
-	      confirm: function(msg, okTitle, cancelTitle) {
-	        var self = this
-	        if (!msg || typeof msg !== 'string') {
-	          msg = "I am Confirm!";
-	        }
-
-	        okTitle = okTitle || "OK";
-	        cancelTitle = cancelTitle || "Cancel";
-	        this.$call('modal', 'confirm', {
-	          'message': msg,
-	          'okTitle': okTitle,
-	          'cancelTitle': cancelTitle
-	        }, function(result) {
-	          self.toast("Click Confirm  " + result);
-	        });
-	      },
-	      prompt: function() {
-	        var self = this;
-	        this.$call('modal', 'prompt', {
-	          'message': 'I am Prompt!',
-	          'okTitle': 'ok',
-	          'cancelTitle': 'cancel'
-	        }, function(result) {
-	          self.toast("Click Prompt  " + result);
-	        });
+	      oninput: function(event) {
+	        this.txtInput = event.value;
+	        console.log('oninput', event.value);
 	      }
 	    }
-	  }
+	  };
 
 	;__weex_module__.exports.template = __weex_module__.exports.template || {}
 	;Object.assign(__weex_module__.exports.template, {
@@ -111,63 +72,36 @@
 	    {
 	      "type": "wxc-panel",
 	      "attr": {
-	        "title": "Toast",
+	        "title": "input",
 	        "type": "primary"
 	      },
 	      "children": [
 	        {
-	          "type": "wxc-button",
+	          "type": "input",
 	          "attr": {
-	            "type": "primary",
-	            "value": "Toast"
+	            "type": "text",
+	            "placeholder": "Text Input",
+	            "autofocus": "true",
+	            "value": ""
 	          },
+	          "classList": [
+	            "input"
+	          ],
 	          "events": {
-	            "click": "toast"
-	          }
-	        }
-	      ]
-	    },
-	    {
-	      "type": "wxc-panel",
-	      "attr": {
-	        "title": "Dialog",
-	        "type": "primary"
-	      },
-	      "children": [
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "success",
-	            "value": "Alert"
-	          },
-	          "events": {
-	            "click": "alert"
-	          },
-	          "style": {
-	            "marginBottom": 20
+	            "change": "onchange",
+	            "input": "oninput"
 	          }
 	        },
 	        {
-	          "type": "wxc-button",
+	          "type": "text",
 	          "attr": {
-	            "type": "primary",
-	            "value": "Confirm"
-	          },
-	          "events": {
-	            "click": "confirm"
-	          },
-	          "style": {
-	            "marginBottom": 20
+	            "value": function () {return 'oninput: ' + (this.txtInput)}
 	          }
 	        },
 	        {
-	          "type": "wxc-button",
+	          "type": "text",
 	          "attr": {
-	            "type": "warning",
-	            "value": "Prompt"
-	          },
-	          "events": {
-	            "click": "prompt"
+	            "value": function () {return 'onchange: ' + (this.txtChange)}
 	          }
 	        }
 	      ]
@@ -175,9 +109,15 @@
 	  ]
 	})
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
-	;Object.assign(__weex_module__.exports.style, {})
+	;Object.assign(__weex_module__.exports.style, {
+	  "input": {
+	    "fontSize": 60,
+	    "height": 80,
+	    "width": 400
+	  }
 	})
-	;__weex_bootstrap__("@weex-component/8c52e29db533f7648b56d547ec8c14f3", {
+	})
+	;__weex_bootstrap__("@weex-component/f3da30bff5b14f03e980fa76780fac70", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 

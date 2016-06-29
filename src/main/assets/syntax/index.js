@@ -44,140 +44,48 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/8c52e29db533f7648b56d547ec8c14f3", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/b42c3e7de7d53d9e21278343556e5ec2", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
-	  __webpack_require__(1);
+	  __webpack_require__(15);
 	  __weex_module__.exports = {
-	    data: function () {return {}},
-	    methods: {
-	      toast: function(msg, duration) {
-	        if (!msg || typeof msg !== 'string') {
-	          msg = 'I am Toast show!';
-	        }
-
-	        duration = duration || 2;
-	        this.$call('modal', 'toast', {
-	          'message': msg,
-	          'duration': duration
-	        });
-	      },
-	      alert: function(msg, okTitle, cancelTitle) {
-	        var self = this;
-	        if (!msg || typeof msg !== 'string') {
-	          msg = "I am Alert!";
-	        }
-	        this.$call('modal', 'alert', {
-	          'message': msg,
-	          'okTitle': okTitle,
-	          'cancelTitle': cancelTitle
-	        }, function() {
-	          self.toast("Click Alert OK Bnt!!");
-	        });
-	      },
-	      confirm: function(msg, okTitle, cancelTitle) {
-	        var self = this
-	        if (!msg || typeof msg !== 'string') {
-	          msg = "I am Confirm!";
-	        }
-
-	        okTitle = okTitle || "OK";
-	        cancelTitle = cancelTitle || "Cancel";
-	        this.$call('modal', 'confirm', {
-	          'message': msg,
-	          'okTitle': okTitle,
-	          'cancelTitle': cancelTitle
-	        }, function(result) {
-	          self.toast("Click Confirm  " + result);
-	        });
-	      },
-	      prompt: function() {
-	        var self = this;
-	        this.$call('modal', 'prompt', {
-	          'message': 'I am Prompt!',
-	          'okTitle': 'ok',
-	          'cancelTitle': 'cancel'
-	        }, function(result) {
-	          self.toast("Click Prompt  " + result);
-	        });
-	      }
-	    }
+	    data: function () {return {
+	      root: 'examples/syntax',
+	      items: [
+	        {name: 'syntax/hello-world', title: 'Hello World'},
+	        {name: 'syntax/hello-world-1', title: 'Hello World 1'},
+	        {name: 'syntax/hello-world-2', title: 'Hello World 2'},
+	        {name: 'syntax/hello-world-3', title: 'Hello World 3'},
+	        {name: 'syntax/hello-world-4', title: 'Hello World 4'},
+	        {name: 'syntax/hello-world-5', title: 'Hello World 5'},
+	        {name: 'syntax/script-component', title: 'Script Component'},
+	        {name: 'syntax/script-data', title: 'Script Data'},
+	        {name: 'syntax/script-events', title: 'Script Event'},
+	        {name: 'syntax/script-instance', title: 'Script Instance'},
+	        {name: 'syntax/script-lifecycle', title: 'Script Lifecycle'},
+	        {name: 'syntax/script-module', title: 'Script Module'},
+	        {name: 'syntax/script-options', title: 'Script Option'},
+	        {name: 'syntax/template-class', title: 'Template Class'},
+	        {name: 'syntax/template-content', title: 'Template Content'},
+	        {name: 'syntax/template-event', title: 'Template Event'},
+	        {name: 'syntax/template-if', title: 'Template IF'},
+	        {name: 'syntax/template-repeat', title: 'Template Repeat'},
+	        {name: 'syntax/template-repeat-update', title: 'Template Repeat Update'},
+	        {name: 'syntax/template-style', title: 'Template Style'}
+	      ]
+	    }}
 	  }
 
 	;__weex_module__.exports.template = __weex_module__.exports.template || {}
 	;Object.assign(__weex_module__.exports.template, {
-	  "type": "scroller",
-	  "children": [
-	    {
-	      "type": "wxc-panel",
-	      "attr": {
-	        "title": "Toast",
-	        "type": "primary"
-	      },
-	      "children": [
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "primary",
-	            "value": "Toast"
-	          },
-	          "events": {
-	            "click": "toast"
-	          }
-	        }
-	      ]
-	    },
-	    {
-	      "type": "wxc-panel",
-	      "attr": {
-	        "title": "Dialog",
-	        "type": "primary"
-	      },
-	      "children": [
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "success",
-	            "value": "Alert"
-	          },
-	          "events": {
-	            "click": "alert"
-	          },
-	          "style": {
-	            "marginBottom": 20
-	          }
-	        },
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "primary",
-	            "value": "Confirm"
-	          },
-	          "events": {
-	            "click": "confirm"
-	          },
-	          "style": {
-	            "marginBottom": 20
-	          }
-	        },
-	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "warning",
-	            "value": "Prompt"
-	          },
-	          "events": {
-	            "click": "prompt"
-	          }
-	        }
-	      ]
-	    }
-	  ]
+	  "type": "example-list",
+	  "attr": {
+	    "items": function () {return this.items},
+	    "root": function () {return this.root}
+	  }
 	})
-	;__weex_module__.exports.style = __weex_module__.exports.style || {}
-	;Object.assign(__weex_module__.exports.style, {})
 	})
-	;__weex_bootstrap__("@weex-component/8c52e29db533f7648b56d547ec8c14f3", {
+	;__weex_bootstrap__("@weex-component/b42c3e7de7d53d9e21278343556e5ec2", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -1317,6 +1225,143 @@
 	    "marginTop": 5,
 	    "textAlign": "center",
 	    "fontSize": 20
+	  }
+	})
+	})
+
+/***/ },
+/* 13 */,
+/* 14 */,
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	;__weex_define__("@weex-component/example-list", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	__webpack_require__(16);
+
+	;
+	  __webpack_require__(1);
+	  __weex_module__.exports = {
+	    data: function () {return {
+	      root: '', // examples, examples/syntax, test ...
+	      items: [
+	        {name: 'hello', title: 'Hello World', url: ''}
+	      ]
+	    }},
+	    created: function() {
+	      var bundleUrl = this.$getConfig().bundleUrl;
+	      console.log('hit', bundleUrl);
+	      var dirs = this.root.split('/');
+	      dirs.forEach(function(dir, index) {
+	        if (!dir) dirs.splice(index, 1);
+	      });
+	      var root = dirs.length > 0 ? dirs[0] : '';
+	      var subRoot = dirs.length > 1 ? dirs.slice(1).join('/') + '/' : '';
+
+	      var nativeBase;
+	      var isAndroidAssets = bundleUrl.indexOf('your_current_IP') >= 0 || bundleUrl.indexOf('file://assets/')>=0;
+	      var isiOSAssets = bundleUrl.indexOf('file:///') >= 0 && bundleUrl.indexOf('WeexDemo.app') > 0;
+	      if (isAndroidAssets) {
+	        nativeBase = 'file://assets/';
+	      }
+	      else if (isiOSAssets) {
+	        // file:///var/mobile/Containers/Bundle/Application/{id}/WeexDemo.app/
+	        // file:///Users/{user}/Library/Developer/CoreSimulator/Devices/{id}/data/Containers/Bundle/Application/{id}/WeexDemo.app/
+	        nativeBase = bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1);
+	      }
+	      else {
+	        var host = 'localhost:12580';
+	        var matches = /\/\/([^\/]+?)\//.exec(this.$getConfig().bundleUrl);
+	        if (matches && matches.length >= 2) {
+	          host = matches[1];
+	        }
+	        nativeBase = '//' + host + '/' + root + '/build/' + subRoot;
+	      }
+	      var h5Base = './index.html?page=./' + root + '/build/' + subRoot;
+	      // in Native
+	      var base = nativeBase;
+	      if (typeof window === 'object') {
+	        // in Browser or WebView
+	        base = h5Base;
+	      }
+
+	      for (var i in this.items) {
+	        var item = this.items[i];
+	        if (!item.url) {
+	          item.url = base + item.name + '.js';
+	        }
+	      }
+	      // see log in Android Logcat
+	      if (this.items.length) console.log('hit', this.items[0].url);
+	    }
+	  }
+
+	;__weex_module__.exports.template = __weex_module__.exports.template || {}
+	;Object.assign(__weex_module__.exports.template, {
+	  "type": "list",
+	  "children": [
+	    {
+	      "type": "cell",
+	      "append": "tree",
+	      "repeat": function () {return this.items},
+	      "children": [
+	        {
+	          "type": "example-list-item",
+	          "attr": {
+	            "title": function () {return this.title},
+	            "url": function () {return this.url}
+	          }
+	        }
+	      ]
+	    }
+	  ]
+	})
+	;__weex_module__.exports.style = __weex_module__.exports.style || {}
+	;Object.assign(__weex_module__.exports.style, {})
+	})
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	;__weex_define__("@weex-component/example-list-item", [], function(__weex_require__, __weex_exports__, __weex_module__){
+
+	;
+	  __webpack_require__(1);
+	  __weex_module__.exports = {
+	    data: function () {return {
+	      title: '',
+	      url: ''
+	    }},
+	    methods: {
+	      redirect: function() {
+	        this.$openURL(this.url);
+	      }
+	    }
+	  }
+
+	;__weex_module__.exports.template = __weex_module__.exports.template || {}
+	;Object.assign(__weex_module__.exports.template, {
+	  "type": "wxc-list-item",
+	  "events": {
+	    "click": "redirect"
+	  },
+	  "children": [
+	    {
+	      "type": "text",
+	      "classList": [
+	        "item-txt"
+	      ],
+	      "attr": {
+	        "value": function () {return this.title}
+	      }
+	    }
+	  ]
+	})
+	;__weex_module__.exports.style = __weex_module__.exports.style || {}
+	;Object.assign(__weex_module__.exports.style, {
+	  "item-txt": {
+	    "fontSize": 48,
+	    "color": "#555555"
 	  }
 	})
 	})
