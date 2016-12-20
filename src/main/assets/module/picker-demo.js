@@ -44,10 +44,11 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __weex_template__ = __webpack_require__(86)
-	var __weex_script__ = __webpack_require__(87)
+	var __weex_template__ = __webpack_require__(215)
+	var __weex_style__ = __webpack_require__(216)
+	var __weex_script__ = __webpack_require__(217)
 
-	__weex_define__('@weex-component/c1a5ee0b8eec58d4b53a6bf8756f068b', [], function(__weex_require__, __weex_exports__, __weex_module__) {
+	__weex_define__('@weex-component/713f21e067b638ad251dbcb7d5b37be5', [], function(__weex_require__, __weex_exports__, __weex_module__) {
 
 	    __weex_script__(__weex_module__, __weex_exports__, __weex_require__)
 	    if (__weex_exports__.__esModule && __weex_exports__.default) {
@@ -56,9 +57,11 @@
 
 	    __weex_module__.exports.template = __weex_template__
 
+	    __weex_module__.exports.style = __weex_style__
+
 	})
 
-	__weex_bootstrap__('@weex-component/c1a5ee0b8eec58d4b53a6bf8756f068b',undefined,undefined)
+	__weex_bootstrap__('@weex-component/713f21e067b638ad251dbcb7d5b37be5',undefined,undefined)
 
 /***/ },
 /* 1 */,
@@ -2025,7 +2028,136 @@
 
 
 /***/ },
-/* 86 */
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -2034,27 +2166,101 @@
 	    {
 	      "type": "wxc-panel",
 	      "attr": {
-	        "title": "Hyperlink",
+	        "title": "picker module",
 	        "type": "primary"
 	      },
 	      "children": [
 	        {
-	          "type": "a",
-	          "attr": {
-	            "href": "http://g.tbcdn.cn/ali-wireless-h5/res/0.0.16/hello.js"
+	          "type": "text",
+	          "style": {
+	            "marginBottom": 20
 	          },
-	          "children": [
-	            {
-	              "type": "wxc-tip",
-	              "attr": {
-	                "type": "info",
-	                "value": "Click me to see how 'A' element opens a new world."
-	              },
-	              "style": {
-	                "marginBottom": 20
-	              }
-	            }
-	          ]
+	          "attr": {
+	            "value": function () {return 'pick value: ' + (this.value)}
+	          }
+	        },
+	        {
+	          "type": "wxc-button",
+	          "attr": {
+	            "type": "primary",
+	            "value": "single pick"
+	          },
+	          "events": {
+	            "click": "pick"
+	          },
+	          "style": {
+	            "marginBottom": 20
+	          }
+	        },
+	        {
+	          "type": "wxc-button",
+	          "attr": {
+	            "type": "primary",
+	            "value": "pickDate"
+	          },
+	          "events": {
+	            "click": "pickDate"
+	          },
+	          "style": {
+	            "marginBottom": 20
+	          }
+	        },
+	        {
+	          "type": "wxc-button",
+	          "attr": {
+	            "type": "primary",
+	            "value": "pickTime"
+	          },
+	          "events": {
+	            "click": "pickTime"
+	          }
+	        }
+	      ]
+	    },
+	    {
+	      "type": "wxc-panel",
+	      "attr": {
+	        "title": "input component",
+	        "type": "primary"
+	      },
+	      "children": [
+	        {
+	          "type": "text",
+	          "attr": {
+	            "value": function () {return 'onchange: ' + (this.txtChange)}
+	          }
+	        },
+	        {
+	          "type": "input",
+	          "attr": {
+	            "type": "date",
+	            "placeholder": "select date",
+	            "autofocus": "false",
+	            "value": "",
+	            "max": "2029-11-28",
+	            "min": "2015-11-28"
+	          },
+	          "classList": [
+	            "input"
+	          ],
+	          "events": {
+	            "change": "onchange"
+	          }
+	        },
+	        {
+	          "type": "input",
+	          "attr": {
+	            "type": "time",
+	            "placeholder": "select time",
+	            "autofocus": "false",
+	            "value": ""
+	          },
+	          "classList": [
+	            "input"
+	          ],
+	          "events": {
+	            "change": "onchange"
+	          }
 	        }
 	      ]
 	    }
@@ -2062,16 +2268,77 @@
 	}
 
 /***/ },
-/* 87 */
+/* 216 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	  "input": {
+	    "fontSize": 60,
+	    "height": 80,
+	    "width": 400
+	  }
+	}
+
+/***/ },
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(module, exports, __weex_require__){'use strict';
 
 	__webpack_require__(4);
 	module.exports = {
-	  data: function () {return {
-	    img: '//gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg'
-	  }}
+	    data: function () {return {
+	        value: '',
+	        index: 0,
+	        txtChange: ''
+	    }},
+	    methods: {
+	        pick: function pick() {
+	            var picker = __weex_require__('@weex-module/picker');
+	            var items = new Array("Saab", "Volvo", "BMW");
+	            var self = this;
+	            picker.pick({
+	                'items': items,
+	                'index': self.index
+	            }, function (ret) {
+	                var result = ret.result;
+	                if (result == 'success') {
+	                    self.value = items[ret.data];
+	                    self.index = ret.data;
+	                }
+	            });
+	        },
+	        pickDate: function pickDate() {
+	            var picker = __weex_require__('@weex-module/picker');
+	            var self = this;
+	            picker.pickDate({
+	                'value': '2016-11-28',
+	                'max': '2029-11-28',
+	                'min': '2015-11-28'
+	            }, function (ret) {
+	                var result = ret.result;
+	                if (result == 'success') {
+	                    self.value = ret.data;
+	                }
+	            });
+	        },
+	        pickTime: function pickTime() {
+	            var picker = __weex_require__('@weex-module/picker');
+	            var self = this;
+	            picker.pickTime({
+	                'value': '19:24'
+	            }, function (ret) {
+	                var result = ret.result;
+	                if (result == 'success') {
+	                    self.value = ret.data;
+	                }
+	            });
+	        },
+	        onchange: function onchange(event) {
+	            this.txtChange = event.value;
+	            console.log('onchange', event.value);
+	        }
+	    }
 	};}
 	/* generated by weex-loader */
 
