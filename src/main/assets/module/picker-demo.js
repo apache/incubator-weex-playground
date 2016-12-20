@@ -44,11 +44,11 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __weex_template__ = __webpack_require__(182)
-	var __weex_style__ = __webpack_require__(183)
-	var __weex_script__ = __webpack_require__(184)
+	var __weex_template__ = __webpack_require__(215)
+	var __weex_style__ = __webpack_require__(216)
+	var __weex_script__ = __webpack_require__(217)
 
-	__weex_define__('@weex-component/1a81fb780319a63605d941949f4ff5d7', [], function(__weex_require__, __weex_exports__, __weex_module__) {
+	__weex_define__('@weex-component/713f21e067b638ad251dbcb7d5b37be5', [], function(__weex_require__, __weex_exports__, __weex_module__) {
 
 	    __weex_script__(__weex_module__, __weex_exports__, __weex_require__)
 	    if (__weex_exports__.__esModule && __weex_exports__.default) {
@@ -61,7 +61,7 @@
 
 	})
 
-	__weex_bootstrap__('@weex-component/1a81fb780319a63605d941949f4ff5d7',undefined,undefined)
+	__weex_bootstrap__('@weex-component/713f21e067b638ad251dbcb7d5b37be5',undefined,undefined)
 
 /***/ },
 /* 1 */,
@@ -2124,153 +2124,220 @@
 /* 179 */,
 /* 180 */,
 /* 181 */,
-/* 182 */
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */
 /***/ function(module, exports) {
 
 	module.exports = {
-	  "type": "div",
-	  "classList": [
-	    "wrapper"
-	  ],
+	  "type": "scroller",
 	  "children": [
 	    {
-	      "type": "div",
-	      "classList": [
-	        "toolbar"
-	      ],
-	      "append": "tree",
+	      "type": "wxc-panel",
+	      "attr": {
+	        "title": "picker module",
+	        "type": "primary"
+	      },
 	      "children": [
 	        {
-	          "type": "wxc-button",
-	          "attr": {
-	            "type": "primary",
-	            "size": "small",
-	            "value": "back"
-	          },
-	          "events": {
-	            "click": "goback"
-	          },
+	          "type": "text",
 	          "style": {
-	            "marginLeft": 30,
-	            "width": 210,
-	            "marginTop": 5,
-	            "marginBottom": 5
+	            "marginBottom": 20
+	          },
+	          "attr": {
+	            "value": function () {return 'pick value: ' + (this.value)}
 	          }
 	        },
 	        {
 	          "type": "wxc-button",
 	          "attr": {
 	            "type": "primary",
-	            "size": "small",
-	            "value": "forward"
+	            "value": "single pick"
 	          },
 	          "events": {
-	            "click": "goforward"
+	            "click": "pick"
 	          },
 	          "style": {
-	            "marginLeft": 30,
-	            "width": 210,
-	            "marginTop": 5,
-	            "marginBottom": 5
+	            "marginBottom": 20
 	          }
 	        },
 	        {
 	          "type": "wxc-button",
 	          "attr": {
 	            "type": "primary",
-	            "size": "small",
-	            "value": "refresh"
+	            "value": "pickDate"
 	          },
 	          "events": {
-	            "click": "refresh"
+	            "click": "pickDate"
 	          },
 	          "style": {
-	            "marginLeft": 30,
-	            "width": 210,
-	            "marginTop": 5,
-	            "marginBottom": 5
+	            "marginBottom": 20
+	          }
+	        },
+	        {
+	          "type": "wxc-button",
+	          "attr": {
+	            "type": "primary",
+	            "value": "pickTime"
+	          },
+	          "events": {
+	            "click": "pickTime"
 	          }
 	        }
 	      ]
 	    },
 	    {
-	      "type": "web",
-	      "classList": [
-	        "content"
-	      ],
-	      "id": "webview",
+	      "type": "wxc-panel",
 	      "attr": {
-	        "src": "https://m.taobao.com/?spm=0.0.0.0&v=0#index"
+	        "title": "input component",
+	        "type": "primary"
 	      },
-	      "events": {
-	        "pagestart": "startload",
-	        "pagefinish": "finishload",
-	        "error": "failload"
-	      }
+	      "children": [
+	        {
+	          "type": "text",
+	          "attr": {
+	            "value": function () {return 'onchange: ' + (this.txtChange)}
+	          }
+	        },
+	        {
+	          "type": "input",
+	          "attr": {
+	            "type": "date",
+	            "placeholder": "select date",
+	            "autofocus": "false",
+	            "value": "",
+	            "max": "2029-11-28",
+	            "min": "2015-11-28"
+	          },
+	          "classList": [
+	            "input"
+	          ],
+	          "events": {
+	            "change": "onchange"
+	          }
+	        },
+	        {
+	          "type": "input",
+	          "attr": {
+	            "type": "time",
+	            "placeholder": "select time",
+	            "autofocus": "false",
+	            "value": ""
+	          },
+	          "classList": [
+	            "input"
+	          ],
+	          "events": {
+	            "change": "onchange"
+	          }
+	        }
+	      ]
 	    }
 	  ]
 	}
 
 /***/ },
-/* 183 */
+/* 216 */
 /***/ function(module, exports) {
 
 	module.exports = {
-	  "wrapper": {
-	    "width": 750,
-	    "position": "absolute",
-	    "top": 0,
-	    "left": 0,
-	    "right": 0,
-	    "bottom": 0
-	  },
-	  "content": {
-	    "position": "absolute",
-	    "top": 0,
-	    "left": 0,
-	    "right": 0,
-	    "bottom": 0,
-	    "marginTop": 0,
-	    "marginBottom": 70
-	  },
-	  "toolbar": {
-	    "flexDirection": "row",
-	    "position": "fixed",
-	    "bottom": 0,
-	    "left": 0,
-	    "right": 0,
-	    "height": 70
+	  "input": {
+	    "fontSize": 60,
+	    "height": 80,
+	    "width": 400
 	  }
 	}
 
 /***/ },
-/* 184 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(module, exports, __weex_require__){'use strict';
 
 	__webpack_require__(4);
-
 	module.exports = {
+	    data: function () {return {
+	        value: '',
+	        index: 0,
+	        txtChange: ''
+	    }},
 	    methods: {
-	        goback: function goback() {
-	            var $webview = __weex_require__('@weex-module/webview');
-	            var webElement = this.$el('webview');
-	            $webview.goBack(webElement.ref);
+	        pick: function pick() {
+	            var picker = __weex_require__('@weex-module/picker');
+	            var items = new Array("Saab", "Volvo", "BMW");
+	            var self = this;
+	            picker.pick({
+	                'items': items,
+	                'index': self.index
+	            }, function (ret) {
+	                var result = ret.result;
+	                if (result == 'success') {
+	                    self.value = items[ret.data];
+	                    self.index = ret.data;
+	                }
+	            });
 	        },
-	        goforward: function goforward() {
-	            var $webview = __weex_require__('@weex-module/webview');
-	            var webElement = this.$el('webview');
-	            $webview.goForward(webElement.ref);
+	        pickDate: function pickDate() {
+	            var picker = __weex_require__('@weex-module/picker');
+	            var self = this;
+	            picker.pickDate({
+	                'value': '2016-11-28',
+	                'max': '2029-11-28',
+	                'min': '2015-11-28'
+	            }, function (ret) {
+	                var result = ret.result;
+	                if (result == 'success') {
+	                    self.value = ret.data;
+	                }
+	            });
 	        },
-	        refresh: function refresh() {
-	            var $webview = __weex_require__('@weex-module/webview');
-	            var webElement = this.$el('webview');
-	            $webview.reload(webElement.ref);
+	        pickTime: function pickTime() {
+	            var picker = __weex_require__('@weex-module/picker');
+	            var self = this;
+	            picker.pickTime({
+	                'value': '19:24'
+	            }, function (ret) {
+	                var result = ret.result;
+	                if (result == 'success') {
+	                    self.value = ret.data;
+	                }
+	            });
 	        },
-	        startload: function startload(e) {},
-	        finishload: function finishload(e) {},
-	        failload: function failload(e) {}
+	        onchange: function onchange(event) {
+	            this.txtChange = event.value;
+	            console.log('onchange', event.value);
+	        }
 	    }
 	};}
 	/* generated by weex-loader */
