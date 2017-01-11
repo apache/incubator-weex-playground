@@ -202,213 +202,125 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.alibaba.weex.commons;
+package com.alibaba.weex.commons.adapter;
 
-import android.graphics.PixelFormat;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.alibaba.weex.commons.util.AssertUtil;
-import com.alibaba.weex.commons.util.ScreenUtil;
-import com.taobao.weex.IWXRenderListener;
-import com.taobao.weex.WXSDKInstance;
-import com.taobao.weex.common.WXRenderStrategy;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.squareup.okhttp.ws.WebSocket;
+import com.squareup.okhttp.ws.WebSocketCall;
+import com.squareup.okhttp.ws.WebSocketListener;
+import com.taobao.weex.appfram.websocket.IWebSocketAdapter;
+import com.taobao.weex.appfram.websocket.WebSocketCloseCodes;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.EOFException;
+import java.io.IOException;
+
+import okio.Buffer;
+import okio.BufferedSource;
 
 /**
- * Created by sospartan on 5/30/16.
+ * Created by moxun on 16/12/27.
  */
-public abstract class AbstractWeexActivity extends AppCompatActivity implements IWXRenderListener {
-  private static final String TAG = "AbstractWeexActivity";
 
-  private ViewGroup mContainer;
-  private WXSDKInstance mInstance;
+public class DefaultWebSocketAdapter implements IWebSocketAdapter {
 
-  protected WXAnalyzerDelegate mWxAnalyzerDelegate;
+    private WebSocket ws;
+    private EventListener eventListener;
 
-  @Override
-  protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    createWeexInstance();
-    mInstance.onActivityCreate();
-    
-    mWxAnalyzerDelegate = new WXAnalyzerDelegate(this);
-    mWxAnalyzerDelegate.onCreate();
-    getWindow().setFormat(PixelFormat.TRANSLUCENT);
-  }
+    @Override
+    public void connect(String url, @Nullable String protocol, EventListener listener) {
+        this.eventListener = listener;
+        OkHttpClient okHttpClient = new OkHttpClient();
 
-  protected final void setContainer(ViewGroup container){
-    mContainer = container;
-  }
+        Request.Builder builder = new Request.Builder();
 
-  protected final ViewGroup getContainer(){
-    return mContainer;
-  }
+        if (protocol != null) {
+            builder.addHeader(HEADER_SEC_WEBSOCKET_PROTOCOL, protocol);
+        }
 
-  protected void destoryWeexInstance(){
-    if(mInstance != null){
-      mInstance.registerRenderListener(null);
-      mInstance.destroy();
-      mInstance = null;
+        builder.url(url);
+
+        WebSocketCall.create(okHttpClient, builder.build()).enqueue(new WebSocketListener() {
+            @Override
+            public void onOpen(WebSocket webSocket, Request request, Response response) throws IOException {
+                ws = webSocket;
+                eventListener.onOpen();
+            }
+
+            @Override
+            public void onMessage(BufferedSource payload, WebSocket.PayloadType type) throws IOException {
+                eventListener.onMessage(payload.readUtf8());
+                payload.close();
+            }
+
+            @Override
+            public void onPong(Buffer payload) {
+
+            }
+
+            @Override
+            public void onClose(int code, String reason) {
+                eventListener.onClose(code, reason, true);
+            }
+
+            @Override
+            public void onFailure(IOException e) {
+                e.printStackTrace();
+                if (e instanceof EOFException) {
+                    eventListener.onClose(WebSocketCloseCodes.CLOSE_NORMAL.getCode(), WebSocketCloseCodes.CLOSE_NORMAL.name(), true);
+                } else {
+                    eventListener.onError(e.getMessage());
+                }
+            }
+        });
     }
-  }
 
-  protected void createWeexInstance(){
-    destoryWeexInstance();
-
-    Rect outRect = new Rect();
-    getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
-
-    mInstance = new WXSDKInstance(this);
-    mInstance.registerRenderListener(this);
-  }
-
-  protected void renderPage(String template,String source){
-    renderPage(template,source,null);
-  }
-
-  protected void renderPage(String template,String source,String jsonInitData){
-    AssertUtil.throwIfNull(mContainer,new RuntimeException("Can't render page, container is null"));
-    Map<String, Object> options = new HashMap<>();
-    options.put(WXSDKInstance.BUNDLE_URL, source);
-    mInstance.setTrackComponent(true);
-    mInstance.render(
-      getPageName(),
-      template,
-      options,
-      jsonInitData,
-      ScreenUtil.getDisplayWidth(this),
-      ScreenUtil.getDisplayHeight(this),
-      WXRenderStrategy.APPEND_ASYNC);
-  }
-
-  protected void renderPageByURL(String url){
-    renderPageByURL(url,null);
-  }
-
-  protected void renderPageByURL(String url,String jsonInitData){
-    AssertUtil.throwIfNull(mContainer,new RuntimeException("Can't render page, container is null"));
-    Map<String, Object> options = new HashMap<>();
-    options.put(WXSDKInstance.BUNDLE_URL, url);
-    mInstance.setTrackComponent(true);
-    mInstance.renderByUrl(
-      getPageName(),
-      url,
-      options,
-      jsonInitData,
-      ScreenUtil.getDisplayWidth(this),
-      ScreenUtil.getDisplayHeight(this),
-      WXRenderStrategy.APPEND_ASYNC);
-  }
-
-  protected String getPageName(){
-    return TAG;
-  }
-
-  @Override
-  public void onStart() {
-    super.onStart();
-    if(mInstance!=null){
-      mInstance.onActivityStart();
+    @Override
+    public void send(String data) {
+        if (ws != null) {
+            try {
+                Buffer buffer = new Buffer().writeUtf8(data);
+                ws.sendMessage(WebSocket.PayloadType.TEXT, buffer.buffer());
+                buffer.flush();
+                buffer.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                reportError(e.getMessage());
+            }
+        } else {
+            reportError("WebSocket is not ready");
+        }
     }
-    if(mWxAnalyzerDelegate != null){
-      mWxAnalyzerDelegate.onStart();
-    }
-  }
 
-  @Override
-  public void onResume() {
-    super.onResume();
-    if(mInstance!=null){
-      mInstance.onActivityResume();
+    @Override
+    public void close(int code, String reason) {
+        if (ws != null) {
+            try {
+                ws.close(code, reason);
+            } catch (Exception e) {
+                e.printStackTrace();
+                reportError(e.getMessage());
+            }
+        }
     }
-    if(mWxAnalyzerDelegate != null){
-      mWxAnalyzerDelegate.onResume();
-    }
-  }
 
-  @Override
-  public void onPause() {
-    super.onPause();
-    if(mInstance!=null){
-      mInstance.onActivityPause();
+    @Override
+    public void destroy() {
+        if (ws != null) {
+            try {
+                ws.close(WebSocketCloseCodes.CLOSE_GOING_AWAY.getCode(), WebSocketCloseCodes.CLOSE_GOING_AWAY.name());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
-    if(mWxAnalyzerDelegate != null){
-      mWxAnalyzerDelegate.onPause();
-    }
-  }
 
-  @Override
-  public void onStop() {
-    super.onStop();
-    if(mInstance!=null){
-      mInstance.onActivityStop();
+    private void reportError(String message) {
+        if (eventListener != null) {
+            eventListener.onError(message);
+        }
     }
-    if(mWxAnalyzerDelegate != null){
-      mWxAnalyzerDelegate.onStop();
-    }
-  }
-
-  @Override
-  public void onDestroy() {
-    super.onDestroy();
-    if(mInstance!=null){
-      mInstance.onActivityDestroy();
-    }
-    if(mWxAnalyzerDelegate != null){
-      mWxAnalyzerDelegate.onDestroy();
-    }
-  }
-
-  @Override
-  public void onViewCreated(WXSDKInstance wxsdkInstance, View view) {
-    View wrappedView = null;
-    if(mWxAnalyzerDelegate != null){
-      wrappedView = mWxAnalyzerDelegate.onWeexViewCreated(wxsdkInstance,view);
-    }
-    if(wrappedView != null){
-      view = wrappedView;
-    }
-    if (mContainer != null) {
-      mContainer.removeAllViews();
-      mContainer.addView(view);
-    }
-  }
-
-
-
-  @Override
-  public void onRefreshSuccess(WXSDKInstance wxsdkInstance, int i, int i1) {
-
-  }
-
-  @Override
-  @CallSuper
-  public void onRenderSuccess(WXSDKInstance instance, int width, int height) {
-    if(mWxAnalyzerDelegate  != null){
-      mWxAnalyzerDelegate.onWeexRenderSuccess(instance);
-    }
-  }
-
-  @Override
-  @CallSuper
-  public void onException(WXSDKInstance instance, String errCode, String msg) {
-    if(mWxAnalyzerDelegate != null){
-      mWxAnalyzerDelegate.onException(instance,errCode,msg);
-    }
-  }
-
-  @Override
-  @CallSuper
-  public boolean onKeyUp(int keyCode, KeyEvent event) {
-    return (mWxAnalyzerDelegate != null && mWxAnalyzerDelegate.onKeyUp(keyCode,event)) || super.onKeyUp(keyCode, event);
-  }
 }
