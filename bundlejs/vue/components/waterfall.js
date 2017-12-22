@@ -45,20 +45,20 @@
 /******/ ({
 
 /***/ 0:
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(477)
+	__vue_styles__.push(__webpack_require__(87)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(478)
+	__vue_exports__ = __webpack_require__(88)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(479)
+	var __vue_template__ = __webpack_require__(89)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -70,10 +70,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/bobning/work/source/apache-incubator-weex/examples/vue/components/waterfall.vue"
+	__vue_options__.__file = "/Users/Hanks/Codes/work/incubator-weex/examples/vue/components/waterfall.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-13cb2621"
+	__vue_options__._scopeId = "data-v-127cc93e"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -89,10 +89,10 @@
 	new Vue(module.exports)
 
 
-/***/ },
+/***/ }),
 
-/***/ 477:
-/***/ function(module, exports) {
+/***/ 87:
+/***/ (function(module, exports) {
 
 	module.exports = {
 	  "page": {
@@ -114,6 +114,9 @@
 	    "height": 40,
 	    "width": 40,
 	    "marginRight": 30
+	  },
+	  "header": {
+	    "backgroundColor": "#ffffff"
 	  },
 	  "banner": {
 	    "height": 377,
@@ -159,7 +162,10 @@
 	    "backgroundColor": "#FFFFFF",
 	    "borderRadius": 12,
 	    "marginTop": 35,
-	    "padding": 12,
+	    "paddingTop": 12,
+	    "paddingRight": 12,
+	    "paddingBottom": 12,
+	    "paddingLeft": 12,
 	    "flexDirection": "row",
 	    "justifyContent": "space-between",
 	    "flexWrap": "wrap"
@@ -222,7 +228,10 @@
 	  },
 	  "itemDesc": {
 	    "fontSize": 24,
-	    "margin": 12,
+	    "marginTop": 12,
+	    "marginRight": 12,
+	    "marginBottom": 12,
+	    "marginLeft": 12,
 	    "color": "#999999",
 	    "lineHeight": 36,
 	    "textAlign": "left"
@@ -236,12 +245,6 @@
 	    "marginLeft": 24,
 	    "marginRight": 24,
 	    "marginBottom": 30
-	  },
-	  "footer": {
-	    "height": 94,
-	    "justifyContent": "center",
-	    "alignItems": "center",
-	    "backgroundColor": "#00cc99"
 	  },
 	  "fixedItem": {
 	    "position": "fixed",
@@ -261,24 +264,16 @@
 	  }
 	}
 
-/***/ },
+/***/ }),
 
-/***/ 478:
-/***/ function(module, exports) {
+/***/ 88:
+/***/ (function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 	//
 	//
 	//
@@ -590,10 +585,6 @@
 	    recylerScroll: function recylerScroll(e) {
 	      this.contentOffset = e.contentOffset.y;
 	    },
-	    loadmore: function loadmore(e) {
-	      console.log('receive loadmore event');
-	      // this.$refs.waterfall.resetLoadmore()
-	    },
 	    showOrRemoveHeader: function showOrRemoveHeader() {
 	      this.showHeader = !this.showHeader;
 	    },
@@ -682,10 +673,12 @@
 	    },
 
 	    scrollToTop: function scrollToTop() {
+	      // weex.requireModule('dom').scrollToElement(this.$refs.cell0)
 	      weex.requireModule('dom').scrollToElement(this.$refs.header);
 	    },
 
 	    setRecyclerPadding: function setRecyclerPadding() {
+	      debugger;
 	      this.padding = this.padding == 0 ? 12 : 0;
 	    },
 
@@ -694,6 +687,7 @@
 	    },
 
 	    moveCell: function moveCell(index) {
+
 	      if (index == 0) {
 	        this.items.splice(this.items.length - 1, 0, this.items.splice(index, 1)[0]);
 	      } else {
@@ -722,14 +716,13 @@
 	  }
 	};
 
-/***/ },
+/***/ }),
 
-/***/ 479:
-/***/ function(module, exports) {
+/***/ 89:
+/***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('waterfall', {
-	    ref: "waterfall",
 	    staticClass: ["page"],
 	    style: {
 	      padding: _vm.padding
@@ -739,12 +732,10 @@
 	      "columnCount": _vm.columnCount,
 	      "columnGap": _vm.columnGap,
 	      "showScrollbar": _vm.showScrollbar,
-	      "scrollable": _vm.scrollable,
-	      "loadmoreoffset": "3000"
+	      "scrollable": _vm.scrollable
 	    },
 	    on: {
-	      "scroll": _vm.recylerScroll,
-	      "loadmore": _vm.loadmore
+	      "scroll": _vm.recylerScroll
 	    }
 	  }, [_c('refresh', {
 	    staticClass: ["refresh"],
@@ -759,10 +750,10 @@
 	    staticClass: ["indicator"]
 	  }), _c('text', {
 	    staticClass: ["refreshText"]
-	  }, [_vm._v(_vm._s(_vm.refreshText))])], 1), (_vm.showHeader) ? _c('header', {
+	  }, [_vm._v(_vm._s(_vm.refreshText))])]), (_vm.showHeader) ? _c('header', {
 	    ref: "header",
 	    staticClass: ["header"]
-	  }, [_c('image', {
+	  }, [_c('div', {
 	    staticClass: ["banner"],
 	    attrs: {
 	      "src": "https://gw.alicdn.com/tps/TB1ESN1PFXXXXX1apXXXXXXXXXX-1000-600.jpg",
@@ -792,10 +783,7 @@
 	      }
 	    })
 	  }))])]) : _vm._e(), _c('header', {
-	    staticClass: ["stickyHeader"],
-	    on: {
-	      "click": _vm.showOrRemoveHeader
-	    }
+	    staticClass: ["stickyHeader"]
 	  }, [(_vm.stickyHeaderType === 'none') ? _c('div', {
 	    staticClass: ["stickyWrapper"]
 	  }, [_c('text', {
@@ -826,7 +814,9 @@
 	    staticClass: ["stickyText"]
 	  }, [_vm._v("Content Offset:" + _vm._s(_vm.contentOffset))])]) : _vm._e()]), _vm._l((_vm.items), function(item, index) {
 	    return _c('cell', {
-	      key: item.src,
+	      key: index,
+	      ref: ("cell" + index),
+	      refInFor: true,
 	      staticClass: ["cell"],
 	      appendAsTree: true,
 	      attrs: {
@@ -857,11 +847,7 @@
 	    }, [_vm._v(_vm._s(item.desc))]) : _vm._e(), (item.behaviourName) ? _c('text', {
 	      staticClass: ["itemClickBehaviour"]
 	    }, [_vm._v(" " + _vm._s(item.behaviourName))]) : _vm._e()])])
-	  }), _c('header', {
-	    staticClass: ["footer"]
-	  }, [_c('text', {
-	    staticClass: ["stickyText"]
-	  }, [_vm._v("Footer")])]), _c('div', {
+	  }), _c('div', {
 	    staticClass: ["fixedItem"],
 	    on: {
 	      "click": _vm.scrollToTop
@@ -872,6 +858,6 @@
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 
-/***/ }
+/***/ })
 
 /******/ });

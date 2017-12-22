@@ -51,14 +51,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(252)
+	__vue_styles__.push(__webpack_require__(65)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(253)
+	__vue_exports__ = __webpack_require__(66)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(254)
+	var __vue_template__ = __webpack_require__(67)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -70,10 +70,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/Hanks/Codes/work/incubator-weex/examples/vue/syntax/script-options.vue"
+	__vue_options__.__file = "/Users/Hanks/Codes/work/incubator-weex/examples/vue/components/sliderinfinite.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-c44ec020"
+	__vue_options__._scopeId = "data-v-e5bd1894"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -91,22 +91,51 @@
 
 /***/ }),
 
-/***/ 252:
+/***/ 65:
 /***/ (function(module, exports) {
 
 	module.exports = {
-	  "title": {
-	    "fontSize": 48
+	  "image": {
+	    "width": 700,
+	    "height": 300
+	  },
+	  "slider": {
+	    "marginTop": 25,
+	    "marginLeft": 25,
+	    "width": 700,
+	    "height": 300,
+	    "borderWidth": 2,
+	    "borderStyle": "solid",
+	    "borderColor": "#41B883"
+	  },
+	  "frame": {
+	    "width": 700,
+	    "height": 300,
+	    "position": "relative"
 	  }
 	}
 
 /***/ }),
 
-/***/ 253:
+/***/ 66:
 /***/ (function(module, exports) {
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -128,57 +157,39 @@
 	//
 	//
 
-	module.exports = {
-	  // // import sub components
-	  // components: {
-	  //   item: require('./components/sub.vue')
-	  // },
+	exports.default = {
+	  data: function data() {
+	    return {
+	      imageList: [{ src: 'https://gw.alicdn.com/tfs/TB1SA2wQXXXXXXDapXXXXXXXXXX-1400-600.png' }, { src: 'https://gw.alicdn.com/tfs/TB1KS_OQXXXXXcSXVXXXXXXXXXX-1400-600.png' }, { src: 'https://gw.alicdn.com/tfs/TB1Ez7XQXXXXXbNXXXXXXXXXXXX-1400-600.png' }, { src: 'https://gw.alicdn.com/tfs/TB1XLn6QXXXXXb2XpXXXXXXXXXX-1400-600.png' }]
 
-	  // // for sub component only
-	  // props: ['a', 'b'],
-
-	  // for root component only
-	  data: {
-	    x: 1,
-	    y: 2
-	  },
-	  // // for sub component only
-	  // data: function () {
-	  //   return {
-	  //     x: 1,
-	  //     y: 2
-	  //   }
-	  // }
-
-	  methods: {
-	    foo: function foo() {
-	      console.log('foo');
-	    }
-	  },
-
-	  computed: {
-	    z: function z() {
-	      return this.x + this.y;
-	    }
-	  },
-
-	  init: function init() {},
-	  created: function created() {},
-	  mounted: function mounted() {}
+	    };
+	  }
 	};
 
 /***/ }),
 
-/***/ 254:
+/***/ 67:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_c('text', {
-	    staticClass: ["title"]
-	  }, [_vm._v("Please check out the source code.")])])
-	}]}
+	  return _c('div', [_c('slider', {
+	    staticClass: ["slider"],
+	    attrs: {
+	      "interval": "3000",
+	      "autoPlay": "true"
+	    }
+	  }, _vm._l((_vm.imageList), function(img) {
+	    return _c('div', {
+	      staticClass: ["frame"]
+	    }, [_c('image', {
+	      staticClass: ["image"],
+	      attrs: {
+	        "resize": "cover",
+	        "src": img.src
+	      }
+	    })])
+	  }))])
+	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 
 /***/ })

@@ -51,14 +51,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(252)
+	__vue_styles__.push(__webpack_require__(148)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(253)
+	__vue_exports__ = __webpack_require__(149)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(254)
+	var __vue_template__ = __webpack_require__(150)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -70,10 +70,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/Hanks/Codes/work/incubator-weex/examples/vue/syntax/script-options.vue"
+	__vue_options__.__file = "/Users/Hanks/Codes/work/incubator-weex/examples/vue/showcase/gesture.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-c44ec020"
+	__vue_options__._scopeId = "data-v-54c2a822"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -91,18 +91,21 @@
 
 /***/ }),
 
-/***/ 252:
+/***/ 148:
 /***/ (function(module, exports) {
 
 	module.exports = {
-	  "title": {
-	    "fontSize": 48
+	  "ct": {
+	    "position": "absolute",
+	    "width": 750,
+	    "height": 1000,
+	    "backgroundColor": "#f7f7f7"
 	  }
 	}
 
 /***/ }),
 
-/***/ 253:
+/***/ 149:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -127,58 +130,64 @@
 	//
 	//
 	//
+	//
+	//
+	//
 
 	module.exports = {
-	  // // import sub components
-	  // components: {
-	  //   item: require('./components/sub.vue')
-	  // },
-
-	  // // for sub component only
-	  // props: ['a', 'b'],
-
-	  // for root component only
-	  data: {
-	    x: 1,
-	    y: 2
+	  data: function data() {
+	    return {
+	      text: 'no press.',
+	      top: '0px',
+	      left: '0px',
+	      flag: false
+	    };
 	  },
-	  // // for sub component only
-	  // data: function () {
-	  //   return {
-	  //     x: 1,
-	  //     y: 2
-	  //   }
-	  // }
-
 	  methods: {
-	    foo: function foo() {
-	      console.log('foo');
+	    handlePress: function handlePress(e) {
+	      this.text = '->longpress(' + e.touch.pageX + ',' + e.touch.pageY + ')id:' + e.touch.identifier;
+	    },
+	    handleSwipe: function handleSwipe(e) {
+	      this.text += '->swipe(' + e.touch.pageX + ',' + e.touch.pageY + ')id:' + e.touch.identifier;
+	    },
+	    handlePanStart: function handlePanStart(e) {
+	      this.flag = false;
+	      this.text = '->panstart(' + e.touch.pageX + ',' + e.touch.pageY + ')id:' + e.touch.identifier;
+	    },
+	    handlePanMove: function handlePanMove(e) {
+	      if (this.flag) {
+	        return;
+	      }
+	      this.flag = true;
+	      this.text += '->panmove(' + e.touch.pageX + ',' + e.touch.pageY + ')id:' + e.touch.identifier;
+	    },
+	    handlePanEnd: function handlePanEnd(e) {
+	      this.text += '->panend(' + e.touch.pageX + ',' + e.touch.pageY + ')id:' + e.touch.identifier;
 	    }
-	  },
-
-	  computed: {
-	    z: function z() {
-	      return this.x + this.y;
-	    }
-	  },
-
-	  init: function init() {},
-	  created: function created() {},
-	  mounted: function mounted() {}
+	  }
 	};
 
 /***/ }),
 
-/***/ 254:
+/***/ 150:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_c('text', {
-	    staticClass: ["title"]
-	  }, [_vm._v("Please check out the source code.")])])
-	}]}
+	  return _c('div', [_c('div', {
+	    staticClass: ["ct"],
+	    style: {
+	      top: _vm.top,
+	      left: _vm.left
+	    },
+	    on: {
+	      "longpress": _vm.handlePress,
+	      "swipe": _vm.handleSwipe,
+	      "panstart": _vm.handlePanStart,
+	      "panmove": _vm.handlePanMove,
+	      "panend": _vm.handlePanEnd
+	    }
+	  }, [_c('text', [_vm._v(_vm._s(_vm.text))])])])
+	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 
 /***/ })

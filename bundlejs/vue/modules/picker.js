@@ -51,14 +51,14 @@
 	var __vue_styles__ = []
 
 	/* styles */
-	__vue_styles__.push(__webpack_require__(252)
+	__vue_styles__.push(__webpack_require__(126)
 	)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(253)
+	__vue_exports__ = __webpack_require__(127)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(254)
+	var __vue_template__ = __webpack_require__(128)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -70,10 +70,10 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/Users/Hanks/Codes/work/incubator-weex/examples/vue/syntax/script-options.vue"
+	__vue_options__.__file = "/Users/Hanks/Codes/work/incubator-weex/examples/vue/modules/picker.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-c44ec020"
+	__vue_options__._scopeId = "data-v-4373d0c4"
 	__vue_options__.style = __vue_options__.style || {}
 	__vue_styles__.forEach(function (module) {
 	  for (var name in module) {
@@ -91,18 +91,18 @@
 
 /***/ }),
 
-/***/ 252:
+/***/ 126:
 /***/ (function(module, exports) {
 
 	module.exports = {
-	  "title": {
-	    "fontSize": 48
+	  "container": {
+	    "flex": 1
 	  }
 	}
 
 /***/ }),
 
-/***/ 253:
+/***/ 127:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -124,60 +124,116 @@
 	//
 	//
 	//
-	//
-	//
-	//
 
+	var picker = weex.requireModule('picker');
 	module.exports = {
-	  // // import sub components
-	  // components: {
-	  //   item: require('./components/sub.vue')
-	  // },
-
-	  // // for sub component only
-	  // props: ['a', 'b'],
-
-	  // for root component only
 	  data: {
-	    x: 1,
-	    y: 2
+	    normalpickData: '',
+	    pickDateData: '',
+	    pickTimeData: ''
 	  },
-	  // // for sub component only
-	  // data: function () {
-	  //   return {
-	  //     x: 1,
-	  //     y: 2
-	  //   }
-	  // }
-
 	  methods: {
-	    foo: function foo() {
-	      console.log('foo');
+	    normalpick: function normalpick() {
+	      var self = this;
+	      picker.pick({
+	        height: '300px',
+	        items: [1, 2, 3, 4]
+	      }, function (ret) {
+	        var result = ret.result;
+	        if (result == 'success') {
+	          self.normalpickData = ret.data;
+	        }
+	      });
+	    },
+	    pickDate: function pickDate(e) {
+	      var self = this;
+	      picker.pickDate({
+	        'value': '2016-12-20',
+	        'max': '2016-12-30',
+	        'min': '2014-12-30'
+	      }, function (ret) {
+	        var result = ret.result;
+	        if (result == 'success') {
+	          self.pickDateData = ret.data;
+	        }
+	      });
+	    },
+	    pickTime: function pickTime() {
+	      var self = this;
+	      picker.pickTime({}, function (ret) {
+	        var result = ret.result;
+	        if (result == 'success') {
+	          self.pickTimeData = ret.data;
+	        }
+	      });
 	    }
-	  },
-
-	  computed: {
-	    z: function z() {
-	      return this.x + this.y;
-	    }
-	  },
-
-	  init: function init() {},
-	  created: function created() {},
-	  mounted: function mounted() {}
+	  }
 	};
 
 /***/ }),
 
-/***/ 254:
+/***/ 128:
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _vm._m(0)
+	  return _c('div', {
+	    staticClass: ["conatiner"]
+	  }, [_vm._m(0), _c('div', {
+	    staticStyle: {
+	      margin: "20px",
+	      padding: "20px",
+	      backgroundColor: "#1ba1e2",
+	      color: "#fff"
+	    },
+	    on: {
+	      "click": _vm.normalpick
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#fff"
+	    }
+	  }, [_vm._v("normalpick" + _vm._s(_vm.normalpickData))])]), _c('div', {
+	    staticStyle: {
+	      margin: "20px",
+	      padding: "20px",
+	      backgroundColor: "#1ba1e2",
+	      color: "#fff"
+	    },
+	    on: {
+	      "click": _vm.pickDate
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#fff"
+	    }
+	  }, [_vm._v("pickDate" + _vm._s(_vm.pickDateData))])]), _c('div', {
+	    staticStyle: {
+	      margin: "20px",
+	      padding: "20px",
+	      backgroundColor: "#1ba1e2",
+	      color: "#fff"
+	    },
+	    on: {
+	      "click": _vm.pickTime
+	    }
+	  }, [_c('text', {
+	    staticStyle: {
+	      color: "#fff"
+	    }
+	  }, [_vm._v("pickTime" + _vm._s(_vm.pickTimeData))])])])
 	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', [_c('text', {
-	    staticClass: ["title"]
-	  }, [_vm._v("Please check out the source code.")])])
+	  return _c('div', {
+	    staticStyle: {
+	      backgroundColor: "#286090"
+	    }
+	  }, [_c('text', {
+	    staticClass: ["title"],
+	    staticStyle: {
+	      height: "80px",
+	      padding: "20px",
+	      color: "white"
+	    }
+	  }, [_vm._v("picker")])])
 	}]}
 	module.exports.render._withStripped = true
 
