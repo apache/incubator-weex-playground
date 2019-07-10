@@ -3,7 +3,7 @@ platform :ios, '9.0'
 #inhibit_all_warnings!
 
 def common
-    pod 'WeexSDK', :path=>'../../'
+    pod 'WeexSDK', git: 'https://github.com/wrmswindmill/incubator-weex.git'
     pod 'WXDevtool','0.20.0'
     pod 'SDWebImage', '3.7.5'
     pod 'SDWebImage/WebP'
