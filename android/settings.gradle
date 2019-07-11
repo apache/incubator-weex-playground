@@ -1,0 +1,5 @@
+rootProject.name = 'weex-playground'
+include ":playground"
+include ":commons"
+
+
