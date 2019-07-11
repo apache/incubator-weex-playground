@@ -1,1 +1,0 @@
-../../../WeexSDK/weex_core/Source/core/bridge/log_bridge.h

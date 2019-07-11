@@ -1,1 +1,0 @@
-../../../WeexSDK/weex_core/Source/base/thread/thread_impl_darwin.h
