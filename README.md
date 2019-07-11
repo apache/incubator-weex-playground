@@ -12,7 +12,7 @@ Find more about weex at [weex.apache.org](https://weex.apache.org).
 * Click <img src="http://gtms04.alicdn.com/tps/i4/TB1wCcqMpXXXXakXpXX3G7tGXXX-34-44.png" height="16" > (`Run` button)
 
 ### iOS
-* install CocoaPods.
+* install `CocoaPods`.
 * Open `ios` directory, and then execute `pod install` in terminal.
 * Open `WeexDemo.xcworkspace` with Xcode.
 * Click <img src="http://gtms04.alicdn.com/tps/i4/TB1wCcqMpXXXXakXpXX3G7tGXXX-34-44.png" height="16" > (`Run` button)
