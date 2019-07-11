@@ -1,0 +1,1 @@
+../../../WeexSDK/ios/sdk/WeexSDK/Sources/Model/WXComponent_performance.h
