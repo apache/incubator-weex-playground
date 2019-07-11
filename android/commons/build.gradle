@@ -66,6 +66,13 @@ dependencies {
     testImplementation 'org.powermock:powermock-module-junit4-legacy:1.6.4'
     testImplementation 'org.powermock:powermock-module-testng:1.6.4'
     testImplementation 'org.robolectric:robolectric:3.0-rc3'
+
+    if(project.implementFromWeex){
+        implementation project(':weex_sdk')
+    }
+    else {
+        implementation "com.taobao.android:weex_sdk:${project.weexSdkVersion}@aar"
+    }
 }
 
 if(file('../license/LICENSE').exists()){
