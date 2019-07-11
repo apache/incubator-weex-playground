@@ -124,6 +124,13 @@ dependencies {
     // Bind actions to effects. See https://alibaba.github.io/bindingx/
     implementation 'com.alibaba.android:bindingx-core:1.1.1.2@aar'
     implementation 'com.alibaba.android:bindingx_weex_plugin:1.1.1@aar'
+
+    if(project.implementFromWeex){
+        implementation project(':weex_sdk')
+    }
+    else {
+        implementation "com.taobao.android:weex_sdk:${project.weexSdkVersion}@aar"
+    }
 }
 
 if(file('../../license/LICENSE').exists()){
