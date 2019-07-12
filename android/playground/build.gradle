@@ -133,9 +133,9 @@ dependencies {
     }
 }
 
-if(file('../../license/LICENSE').exists()){
+if(file('../../LICENSE').exists()){
     license {
-        header = file('../../license/LICENSE')
+        header = file('../../LICENSE')
         excludes(["com/google/zxing/**/*.java","**/*.xml"])
     }
     preBuild.dependsOn licenseFormat
