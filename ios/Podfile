@@ -3,14 +3,19 @@ platform :ios, '9.0'
 #inhibit_all_warnings!
 
 def common
-    pod 'WeexSDK', :git => 'https://github.com/apache/incubator-weex.git'
+    # check if weex-playground is a submodule
+    if File.file?('../../.gitmodules') && File.readlines('../../.gitmodules').grep(/submodule \"weex-playground\"/).size > 0
+    	pod 'WeexSDK', :path => '../../'
+    else
+        pod 'WeexSDK', :git => 'https://github.com/apache/incubator-weex.git'    
+    end
+    
     pod 'WXDevtool','0.20.0'
     pod 'SDWebImage', '3.7.5'
     pod 'SDWebImage/WebP'
     pod 'SocketRocket', '0.4.2'
     pod 'ATSDK-Weex', '0.0.1',:configurations => ['Debug']
     pod 'BindingX', '1.0.3'
-    
     # WeexGcanvas is added by Weex Plugin, more info at https://market.dotwe.org/ext/list.htm
     #pod 'WeexGcanvas'
 end
@@ -22,3 +27,4 @@ end
 target 'WeexUITestDemo' do
     common
 end
+
