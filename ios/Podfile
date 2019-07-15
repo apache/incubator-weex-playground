@@ -2,10 +2,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 #inhibit_all_warnings!
 
-
 def common
-    pod 'WeexSDK', :path => '../../' if File.file?('../../.gitmodules')
-    pod 'WeexSDK', :git => 'https://github.com/apache/incubator-weex.git' if !File.file?('../../.gitmodules')
+    if File.file?('../../.gitmodules') && File.readlines('../../.gitmodules').grep(/submodule \"weex-playground\"/).size > 0
+    	pod 'WeexSDK', :path => '../../'
+    else
+        pod 'WeexSDK', :git => 'https://github.com/apache/incubator-weex.git'    
+    end
     
     pod 'WXDevtool','0.20.0'
     pod 'SDWebImage', '3.7.5'
@@ -24,3 +26,4 @@ end
 target 'WeexUITestDemo' do
     common
 end
+
