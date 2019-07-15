@@ -75,9 +75,10 @@ dependencies {
     }
 }
 
-if(file('../../LICENSE').exists()){
+
+if(file('../license/LICENSE').exists()){
     license {
-        header = file('../../LICENSE')
+        header = file('../license/LICENSE')
     }
     preBuild.dependsOn licenseFormat
 }
