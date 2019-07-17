@@ -1,0 +1,70 @@
+os: linux
+matrix:
+    fast_finish: true
+    include:
+      - env: TEST_SUITE=android
+        language: android
+        dist: trusty
+        jdk: oraclejdk8
+        android:
+          components:
+            - android-26
+            - extra-android-m2repository
+cache:
+  directories:
+    - npm
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
+    - $HOME/android-ndk-r18b
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+install:
+  - |
+    case $TEST_SUITE in
+      "android") 
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+        nvm install 7.6
+        npm install
+        echo y | sdkmanager "cmake;3.6.4111459"
+        if find "${HOME}/android-ndk-r18b" -mindepth 1 | read; then
+          echo "NDK cache hit"
+        else
+          echo "NDK cache missed"
+          rmdir "${HOME}/android-ndk-r18b"
+        fi
+  
+        if [[ ! -d "${HOME}/android-ndk-r18b" ]]; then
+          wget https://dl.google.com/android/repository/android-ndk-r18b-linux-x86_64.zip
+          unzip android-ndk-r18b-linux-x86_64.zip -d $HOME
+        fi
+        export ANDROID_NDK_HOME=$HOME/android-ndk-r18b
+        export PATH=$PATH:$ANDROID_NDK_HOME
+        echo "ndk.dir=$ANDROID_NDK_HOME" > android/local.properties
+        ;;
+    esac
+script:
+  - |
+    case $TEST_SUITE in
+      "android") 
+        hasAndroidFile=$(npm run danger -- run --dangerfile ./dangerfile-android.js)
+        echo "The value of hasAndroidFile is ${hasAndroidFile}"
+        if [[ "$hasAndroidFile" =~ "hasAndroidFile" ]]; then
+          cd android
+          ./gradlew clean assembleRelease --info
+        fi
+        ;;
+    esac
+notifications:
+  webhooks:
+    on_pull_requests: false
+    urls:
+      - https://oapi.dingtalk.com/robot/send?access_token=5a6be5eb6ad180fa4d04bdda0b24857ee49c3dd985361efdf0964aa9134ee623
+    on_success: never 
+    on_failure: always
+  email:
+    recipients:
+      - weexnotify@gmail.com
+    on_success: never
+    on_failure: always
