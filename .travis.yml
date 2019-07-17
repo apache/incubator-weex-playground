@@ -10,6 +10,8 @@ matrix:
           components:
             - android-26
             - extra-android-m2repository
+      - env: TEST_SUITE=ios
+        language: objective-c
 cache:
   directories:
     - npm
@@ -43,6 +45,10 @@ install:
         export PATH=$PATH:$ANDROID_NDK_HOME
         echo "ndk.dir=$ANDROID_NDK_HOME" > android/local.properties
         ;;
+        "ios" )
+        npm install
+        cd ios && pod install 
+        ;;
     esac
 script:
   - |
@@ -53,6 +59,13 @@ script:
         if [[ "$hasAndroidFile" =~ "hasAndroidFile" ]]; then
           cd android
           ./gradlew clean assembleRelease --info
+        fi
+        ;;
+      "ios" )
+        hasIosFile=$(npm run danger -- run --dangerfile ./dangerfile-ios.js)
+        echo "The value of hasIosFile is ${hasIosFile}"
+        if [[ "$hasIosFile" =~ "hasIosFile" ]]; then
+          xcodebuild -project ios/WeexSDK.xcodeproj test -scheme WeexUITestDemo CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination "platform=iOS Simulator,name=iPhone 6"
         fi
         ;;
     esac
