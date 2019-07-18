@@ -91,7 +91,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-//    [_instance didDisappear];
+    [_instance didDisappear];
     [self updateInstanceState:WeexInstanceDisappear];
 }
 
@@ -107,7 +107,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [_instance willAppear];
+    [_instance willAppear];
     [self setupNaviBar];
     [self setupRightBarItem];
     [self.navigationController setNavigationBarHidden:_showNavigationBar];
@@ -147,16 +147,16 @@
 - (void)render
 {
     CGFloat width = self.view.frame.size.width;
-//    if ([_url.absoluteString isEqualToString:HOME_URL]) {
-//        [self.navigationController setNavigationBarHidden:YES];
-//    }
+    if ([_url.absoluteString isEqualToString:HOME_URL]) {
+        [self.navigationController setNavigationBarHidden:YES];
+    }
     [_instance destroyInstance];
     _instance = [[WXSDKInstance alloc] init];
     if([WXPrerenderManager isTaskExist:[self.url absoluteString]]){
         _instance = [WXPrerenderManager instanceFromUrl:self.url.absoluteString];
     }
     
-//    _instance.isMainContainerStack = YES;
+    _instance.isMainContainerStack = YES;
     _instance.viewController = self;
     UIEdgeInsets safeArea = UIEdgeInsetsZero;
     
