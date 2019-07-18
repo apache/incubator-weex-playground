@@ -23,4 +23,3 @@
 @interface WXSelectComponent : WXComponent <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end
-
