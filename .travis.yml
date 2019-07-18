@@ -45,7 +45,7 @@ install:
         export PATH=$PATH:$ANDROID_NDK_HOME
         echo "ndk.dir=$ANDROID_NDK_HOME" > android/local.properties
         ;;
-        "ios" )
+      "ios")
         npm install
         cd ios && pod install --repo-update
         ;;
@@ -61,11 +61,11 @@ script:
           ./gradlew clean assembleRelease --info
         fi
         ;;
-      "ios" )
+      "ios")
         hasIosFile=$(npm run danger -- run --dangerfile ./dangerfile-ios.js)
         echo "The value of hasIosFile is ${hasIosFile}"
         if [[ "$hasIosFile" =~ "hasIosFile" ]]; then
-          xcodebuild -project ios/WeexSDK.xcodeproj test -scheme WeexUITestDemo CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination "platform=iOS Simulator,name=iPhone 6"
+          xcodebuild -project ios/WeexDemo.xcworkspace test -scheme WeexUITestDemo CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination "platform=iOS Simulator,name=iPhone 6"
         fi
         ;;
     esac
