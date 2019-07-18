@@ -41,6 +41,7 @@
 		B83A6C5220FF16D50053BCEF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B83A6C5120FF16D50053BCEF /* libc++.tbd */; };
 		C43CDA031F1C6E01005A6B03 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C43CDA021F1C6E01005A6B03 /* libz.tbd */; };
 		C47B78D21F299E27001D3B0C /* WXExtendCallNativeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B78D11F299E27001D3B0C /* WXExtendCallNativeTest.m */; };
+		CADA51BC91E0FBE94783D91E /* libPods-WeexDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98BDC9253B584646FED2C646 /* libPods-WeexDemo.a */; };
 		DC15A3C7200C505C009C8977 /* WXTitleBarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DC15A3C6200C505C009C8977 /* WXTitleBarModule.m */; };
 		DC15A3D0200E30FC009C8977 /* WXNavigationHandlerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = DC15A3CE200E30FC009C8977 /* WXNavigationHandlerImpl.m */; };
 		DC20B8E61ECADA2500845F39 /* WXConfigCenterDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20B8E51ECADA2500845F39 /* WXConfigCenterDefaultImpl.m */; };
@@ -56,7 +57,7 @@
 		DCABAFFE1D029753001C8592 /* WXImgLoaderDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = DCABAFFD1D029753001C8592 /* WXImgLoaderDefaultImpl.m */; };
 		DCABB0011D02975E001C8592 /* WXEventModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DCABB0001D02975E001C8592 /* WXEventModule.m */; };
 		DCD286E01CF491AC00C601CA /* weex-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD286DF1CF491AC00C601CA /* weex-icon.png */; };
-		EAEC716BE3E43DBC8494EC51 /* libPods-WeexDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7601607D735D7F8D88971230 /* libPods-WeexDemo.a */; };
+		EAEC716BE3E43DBC8494EC51 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		847CAF2F1F39E3F100551725 /* WXExtModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXExtModule.h; sourceTree = "<group>"; };
 		847CAF301F39E3F100551725 /* WXExtModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXExtModule.m; sourceTree = "<group>"; };
 		9420131417A731ED089B0814 /* Pods-WeexDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexDemo/Pods-WeexDemo.release.xcconfig"; sourceTree = "<group>"; };
+		98BDC9253B584646FED2C646 /* libPods-WeexDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83A6C5120FF16D50053BCEF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		C43CDA021F1C6E01005A6B03 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C47B78D01F299E27001D3B0C /* WXExtendCallNativeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXExtendCallNativeTest.h; sourceTree = "<group>"; };
@@ -149,7 +151,8 @@
 				B83A6C5220FF16D50053BCEF /* libc++.tbd in Frameworks */,
 				C43CDA031F1C6E01005A6B03 /* libz.tbd in Frameworks */,
 				DC6DD9D21CFE9BC400549297 /* libsqlite3.0.tbd in Frameworks */,
-				EAEC716BE3E43DBC8494EC51 /* libPods-WeexDemo.a in Frameworks */,
+				EAEC716BE3E43DBC8494EC51 /* BuildFile in Frameworks */,
+				CADA51BC91E0FBE94783D91E /* libPods-WeexDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +194,7 @@
 				741DFE081DDDD519009B020F /* libstdc++.tbd */,
 				7475ACA01CD8444A0044E96C /* libsqlite3.0.tbd */,
 				E48C20F443AA337D1FE97622 /* libPods-WeexUITestDemo.a */,
+				98BDC9253B584646FED2C646 /* libPods-WeexDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

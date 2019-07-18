@@ -8,7 +8,7 @@ def common
     if File.file?('../../.gitmodules') && File.readlines('../../.gitmodules').grep(/submodule \"weex-playground\"/).size > 0
     	pod 'WeexSDK', :path => '../../'
     else
-        pod 'WeexSDK', :git => 'https://github.com/apache/incubator-weex.git'    
+        pod 'WeexSDK'
     end
     
     pod 'WXDevtool','0.20.0'
