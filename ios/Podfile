@@ -4,6 +4,7 @@ platform :ios, '9.0'
 
 
 def common
+    # check if weex-playground is a submodule
     if File.file?('../../.gitmodules') && File.readlines('../../.gitmodules').grep(/submodule \"weex-playground\"/).size > 0
     	pod 'WeexSDK', :path => '../../'
     else
