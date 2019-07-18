@@ -91,7 +91,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [_instance didDisappear];
+//    [_instance didDisappear];
     [self updateInstanceState:WeexInstanceDisappear];
 }
 
@@ -107,7 +107,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [_instance willAppear];
+//    [_instance willAppear];
     [self setupNaviBar];
     [self setupRightBarItem];
     [self.navigationController setNavigationBarHidden:_showNavigationBar];
@@ -156,7 +156,7 @@
         _instance = [WXPrerenderManager instanceFromUrl:self.url.absoluteString];
     }
     
-    _instance.isMainContainerStack = YES;
+//    _instance.isMainContainerStack = YES;
     _instance.viewController = self;
     UIEdgeInsets safeArea = UIEdgeInsetsZero;
     
