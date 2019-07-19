@@ -46,7 +46,6 @@ install:
         echo "ndk.dir=$ANDROID_NDK_HOME" > android/local.properties
         ;;
       "ios")
-        apt-get install tree -y
         npm install
         cd ios && pod install --repo-update
         ;;
@@ -63,12 +62,11 @@ script:
         fi
         ;;
       "ios")
-        echo "ios/Pods/WeexSDK/weex_core/Source/core/common/view_utils.h"
-        tree
-        # cat ios/Pods/WeexSDK/weex_core/Source/core/common/view_utils.h | while read line
-        # do
-        #     echo $line
-        # done
+        echo "Pods/WeexSDK/weex_core/Source/core/common/view_utils.h"
+        cat ./Pods/WeexSDK/weex_core/Source/core/common/view_utils.h | while read line
+        do
+            echo $line
+        done
 
         hasIosFile=$(npm run danger -- run --dangerfile ./dangerfile-ios.js)
         echo "The value of hasIosFile is ${hasIosFile}"
