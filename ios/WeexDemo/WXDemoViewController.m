@@ -147,9 +147,9 @@
 - (void)render
 {
     CGFloat width = self.view.frame.size.width;
-    if ([_url.absoluteString isEqualToString:HOME_URL]) {
-        [self.navigationController setNavigationBarHidden:YES];
-    }
+//    if ([_url.absoluteString isEqualToString:HOME_URL]) {
+//        [self.navigationController setNavigationBarHidden:YES];
+//    }
     [_instance destroyInstance];
     _instance = [[WXSDKInstance alloc] init];
     if([WXPrerenderManager isTaskExist:[self.url absoluteString]]){
