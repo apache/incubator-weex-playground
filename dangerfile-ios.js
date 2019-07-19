@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -16,11 +16,43 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { schedule, danger, fail, warn, message, markdown } from "danger";
 
-#import <UIKit/UIKit.h>
-#import <WeexSDK/WXComponent.h>
+function checkIosFile(file){
+  return file.match(/ios\//)?true:false;
+}
 
-@interface WXSelectComponent : WXComponent <UIPickerViewDataSource, UIPickerViewDelegate>
+var hasIosFile = false;
 
-@end
+if (!hasIosFile && danger.git.created_files) {
+  danger.git.created_files.some(file => {
+    var f = checkIosFile(file);
+    if(f){
+      hasIosFile =f;
+    }
+    return f;
+  });
+}
+if (!hasIosFile && danger.git.modified_files) {
+  danger.git.modified_files.some(file => {
+    var f = checkIosFile(file);
+    if(f){
+      hasIosFile =f;
+    }
+    return f;
+  });
+}
+if (!hasIosFile && danger.git.deleted_files) {
+  danger.git.deleted_files.some(file => {
+    var f = checkIosFile(file);
+    if(f){
+      hasIosFile =f;
+    }
+    return f;
+  });
+}
+
+if(hasIosFile){
+  console.log('hasIosFile');
+}
 
