@@ -92,28 +92,7 @@ under the License.
             </intent-filter>
         </activity>
         <activity
-                android:name="com.google.zxing.client.android.CaptureActivity"
-                android:clearTaskOnLaunch="true"
-                android:screenOrientation="portrait"
-                android:stateNotNeeded="true"
-                android:theme="@style/CaptureTheme"
-                android:windowSoftInputMode="stateAlwaysHidden">
-            <intent-filter>
-                <action android:name="com.google.zxing.client.android.SCAN"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
-                <data android:host="zxing.appspot.com" android:path="/scan" android:scheme="http"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name="com.google.zxing.client.android.history.HistoryActivity"
+                android:name=".thirdParty.zxing.HistoryActivity"
                 android:label="@string/history_title"
                 android:stateNotNeeded="true"/>
         <activity android:name="com.alibaba.weex.BenchmarkActivity"
@@ -123,6 +102,13 @@ under the License.
                   android:exported="true"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".CustomCaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            ></activity>
 
         <service
             android:name=".update.UpdateService"

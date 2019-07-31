@@ -31,8 +31,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.alibaba.weex.CustomCaptureActivity;
 import com.alibaba.weex.WXPageActivity;
-import com.google.zxing.client.android.CaptureActivity;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
@@ -65,7 +66,10 @@ public class WXEventModule extends WXModule {
           ActivityCompat.requestPermissions((Activity) mWXSDKInstance.getContext(), new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
         }
       } else {
-        mWXSDKInstance.getContext().startActivity(new Intent(mWXSDKInstance.getContext(), CaptureActivity.class));
+        new IntentIntegrator((Activity) mWXSDKInstance.getContext()).setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+                .setBeepEnabled(false).setCaptureActivity(CustomCaptureActivity.class)
+                .initiateScan();
+ //       mWXSDKInstance.getContext().startActivity(new Intent(mWXSDKInstance.getContext(), CaptureActivity.class));
       }
       return;
     }
@@ -129,10 +133,14 @@ public class WXEventModule extends WXModule {
       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
       if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
           if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-              mWXSDKInstance.getContext().startActivity(new Intent(mWXSDKInstance.getContext(), CaptureActivity.class));
+            new IntentIntegrator((Activity) mWXSDKInstance.getContext()).setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+                    .setBeepEnabled(false).setCaptureActivity(CustomCaptureActivity.class)
+                    .initiateScan();
+ //             mWXSDKInstance.getContext().startActivity(new Intent(mWXSDKInstance.getContext(), CaptureActivity.class));
           } else {
               Toast.makeText(mWXSDKInstance.getContext(), "request camara permission fail!", Toast.LENGTH_SHORT).show();
           }
       }
   }
+
 }

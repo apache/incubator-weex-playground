@@ -41,7 +41,7 @@ import android.widget.Toast;
 
 import com.alibaba.weex.commons.AbstractWeexActivity;
 import com.alibaba.weex.update.CheckForUpdateUtil;
-import com.google.zxing.client.android.CaptureActivity;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.WXSDKInstance;
 import com.taobao.weex.common.WXErrorCode;
@@ -137,7 +137,10 @@ public class IndexActivity extends AbstractWeexActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
           }
         } else {
-          startActivity(new Intent(this, CaptureActivity.class));
+          new IntentIntegrator(this).setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+                  .setBeepEnabled(false).setCaptureActivity(CustomCaptureActivity.class)
+                  .initiateScan();
+     //     startActivity(new Intent(this, CaptureActivity.class));
         }
         break;
       default:
@@ -152,7 +155,9 @@ public class IndexActivity extends AbstractWeexActivity {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
       if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        startActivity(new Intent(this, CaptureActivity.class));
+        new IntentIntegrator(this).setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+                .setBeepEnabled(false).setCaptureActivity(CustomCaptureActivity.class)
+                .initiateScan();
       } else {
         Toast.makeText(this, "request camara permission fail!", Toast.LENGTH_SHORT).show();
       }
