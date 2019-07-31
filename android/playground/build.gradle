@@ -48,7 +48,7 @@ android {
         main {
             jniLibs.srcDir(['libs'])
             java {
-                srcDirs = ["src/main/java", "src/main/java_zxing"];
+                srcDirs = ["src/main/java"];
             }
         }
     }
@@ -125,6 +125,7 @@ dependencies {
     implementation 'com.alibaba.android:bindingx-core:1.1.1.2@aar'
     implementation 'com.alibaba.android:bindingx_weex_plugin:1.1.1@aar'
 
+    implementation('com.journeyapps:zxing-android-embedded:3.6.0') { transitive = false }
     if(project.implementFromWeex){
         implementation project(':weex_sdk')
     }
@@ -136,7 +137,7 @@ dependencies {
 if(file('../license/LICENSE').exists()){
     license {
         header = file('../license/LICENSE')
-        excludes(["com/google/zxing/**/*.java","**/*.xml"])
+        excludes(["**/*.xml","com/alibaba/weex/thirdParty/zxing/*.java"])
     }
     preBuild.dependsOn licenseFormat
 }
