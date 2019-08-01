@@ -62,12 +62,6 @@ script:
         fi
         ;;
       "ios")
-        echo "Pods/WeexSDK/weex_core/Source/core/common/view_utils.h"
-        cat ./Pods/WeexSDK/weex_core/Source/core/common/view_utils.h | while read line
-        do
-            echo $line
-        done
-
         hasIosFile=$(npm run danger -- run --dangerfile ./dangerfile-ios.js)
         echo "The value of hasIosFile is ${hasIosFile}"
         if [[ "$hasIosFile" =~ "hasIosFile" ]]; then
