@@ -1,9 +1,7 @@
 # incubator-weex-playground
+Weex Playground is a development tool, which can be used to test and preview weex pages on Android or IOS.
 
-[Weex](https://github.com/apache/incubator-weex) is a framework for building high-performance cross-platform mobile applications with a modern web development experience.
-Weex Playground App can be used to test and preview weex pages on Android or IOS.
-
-Find more about weex at [weex.apache.org](https://weex.apache.org).
+Find more about playground at our [website](https://weex.apache.org/guide/playground.html).
 
 ## Run Weex Playground
 ### Android
