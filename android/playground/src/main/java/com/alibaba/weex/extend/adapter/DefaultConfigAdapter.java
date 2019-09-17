@@ -29,4 +29,14 @@ public class DefaultConfigAdapter implements IWXConfigAdapter {
     public String getConfig(String nameSpace, String key, String defaultValue) {
         return defaultValue;
     }
+
+    @Override
+    public String getConfigWhenInit(String nameSpace, String key, String defaultValue) {
+        return defaultValue;
+    }
+
+    @Override
+    public boolean checkMode(String name) {
+        return false;
+    }
 }

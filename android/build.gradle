@@ -45,7 +45,7 @@ ext {
     targetSdkVersion=26
     supportLibVersion="26.0.2"
     fastjsonLibVersion="1.1.46.android"
-    weexSdkVersion="0.26.1.3-SNAPSHOT"
+    weexSdkVersion="0.26.1.7-SNAPSHOT"
     implementFromWeex = false
 
 }
