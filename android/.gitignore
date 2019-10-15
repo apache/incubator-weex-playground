@@ -2,6 +2,7 @@
 .idea
 local.properties
 *iml
+playground/src/main/jniLibs
 build
 captures
 .settings

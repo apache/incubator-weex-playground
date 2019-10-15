@@ -7,7 +7,6 @@ apply plugin: 'com.android.library'
 android {
 
     compileSdkVersion project.compileSdkVersion
-//    buildToolsVersion project.buildToolsVersion
     resourcePrefix "weexcomm"
 
     defaultConfig {

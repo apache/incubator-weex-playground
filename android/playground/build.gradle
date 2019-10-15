@@ -3,6 +3,9 @@ plugins {
 }
 
 apply plugin: 'com.android.application'
+if(!project.implementFromWeex){
+    apply from: 'https://raw.githubusercontent.com/apache/incubator-weex/release/0.28/android/sdk/buildSrc/download_jsc.gradle'
+}
 
 android {
     compileSdkVersion project.compileSdkVersion
@@ -42,14 +45,6 @@ android {
         debug {
             jniDebuggable true
             debuggable true
-        }
-    }
-    sourceSets {
-        main {
-            jniLibs.srcDir(['libs'])
-            java {
-                srcDirs = ["src/main/java"];
-            }
         }
     }
     lintOptions {
