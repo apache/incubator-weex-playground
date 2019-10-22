@@ -16,22 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.alibaba.weex.commons.adapter;
+package org.apache.weex.commons.adapter;
 
-import com.taobao.weex.WXEnvironment;
-import com.taobao.weex.adapter.IWXJSExceptionAdapter;
-import com.taobao.weex.common.WXJSExceptionInfo;
-import com.taobao.weex.utils.WXLogUtils;
+import com.taobao.weex.appfram.websocket.IWebSocketAdapter;
+import com.taobao.weex.appfram.websocket.IWebSocketAdapterFactory;
 
 /**
+ * Created by moxun on 16/12/28.
  */
 
-public class JSExceptionAdapter implements IWXJSExceptionAdapter {
-
-  @Override
-  public void onJSException(WXJSExceptionInfo exception) {
-    if (exception != null && WXEnvironment.isApkDebugable()) {
-      WXLogUtils.d(exception.toString());
+public class DefaultWebSocketAdapterFactory implements IWebSocketAdapterFactory {
+    @Override
+    public IWebSocketAdapter createWebSocketAdapter() {
+        return new DefaultWebSocketAdapter();
     }
-  }
 }

@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.alibaba.weex.commons.adapter;
+package org.apache.weex.commons.adapter;
 
 import android.support.annotation.Nullable;
 
-import com.alibaba.weex.commons.util.WSEventReporter;
+import org.apache.weex.commons.util.WSEventReporter;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.alibaba.weex.commons;
+package org.apache.weex.commons;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

@@ -20,7 +20,6 @@
 package com.alibaba.weex;
 
 import android.os.Bundle;
-import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +27,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
-import com.alibaba.weex.commons.adapter.ImageAdapter;
+import org.apache.weex.commons.adapter.ImageAdapter;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;

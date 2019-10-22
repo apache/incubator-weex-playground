@@ -45,7 +45,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.weex.commons.WXAnalyzerDelegate;
+import org.apache.weex.commons.WXAnalyzerDelegate;
 import com.alibaba.weex.constants.Constants;
 import com.alibaba.weex.https.HotRefreshManager;
 import com.alibaba.weex.https.WXHttpManager;

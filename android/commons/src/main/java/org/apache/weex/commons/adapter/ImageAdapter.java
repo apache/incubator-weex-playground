@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.alibaba.weex.commons.adapter;
+package org.apache.weex.commons.adapter;
 
 import android.net.Uri;
 import android.os.Looper;
@@ -31,7 +31,6 @@ import com.taobao.weex.WXSDKManager;
 import com.taobao.weex.adapter.IWXImgLoaderAdapter;
 import com.taobao.weex.common.WXImageStrategy;
 import com.taobao.weex.dom.WXImageQuality;
-import com.taobao.weex.ui.IFComponentHolder;
 
 public class ImageAdapter implements IWXImgLoaderAdapter {
 

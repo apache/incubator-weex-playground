@@ -17,8 +17,5 @@ specific language governing permissions and limitations
 under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.alibaba.weex.commons">
-
-
-
+          package="org.apache.weex.commons">
 </manifest>

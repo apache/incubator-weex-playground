@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.alibaba.weex.commons;
+package org.apache.weex.commons;
 
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
@@ -30,8 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.weex.commons.util.AssertUtil;
-import com.alibaba.weex.commons.util.ScreenUtil;
+import org.apache.weex.commons.util.AssertUtil;
 import com.taobao.weex.IWXRenderListener;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKInstance;

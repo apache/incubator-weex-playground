@@ -39,7 +39,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.weex.commons.AbstractWeexActivity;
+import org.apache.weex.commons.AbstractWeexActivity;
 import com.alibaba.weex.update.CheckForUpdateUtil;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.taobao.weex.WXSDKEngine;

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.alibaba.weex.commons.adapter;
+package org.apache.weex.commons.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;

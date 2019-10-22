@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.alibaba.weex.commons.util;
+package org.apache.weex.commons.util;
 
 /**
  * Created by sospartan on 5/31/16.
