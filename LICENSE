@@ -211,11 +211,11 @@ conditions of the following licenses.
 
 This product bundles zxing v3.3.0, which is available under a
 "Apache" license,For details, see https://github.com/zxing/zxing/tree/zxing-3.3.0 and following files:
-android/playground/src/main/java/com/alibaba/weex/thirdParty/zxing/DBHelper.java
-android/playground/src/main/java/com/alibaba/weex/thirdParty/zxing/HistoryActivity.java
-android/playground/src/main/java/com/alibaba/weex/thirdParty/zxing/HistoryItem.java
-android/playground/src/main/java/com/alibaba/weex/thirdParty/zxing/HistoryItemAdapter.java
-android/playground/src/main/java/com/alibaba/weex/thirdParty/zxing/HistoryManager.java
+android/playground/src/main/java/org/apache/weex/thirdParty/zxing/DBHelper.java
+android/playground/src/main/java/org/apache/weex/thirdParty/zxing/HistoryActivity.java
+android/playground/src/main/java/org/apache/weex/thirdParty/zxing/HistoryItem.java
+android/playground/src/main/java/org/apache/weex/thirdParty/zxing/HistoryItemAdapter.java
+android/playground/src/main/java/org/apache/weex/thirdParty/zxing/HistoryManager.java
 
 /*
  * Copyright (C) 2009 ZXing authors

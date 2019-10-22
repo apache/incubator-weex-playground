@@ -24,7 +24,7 @@ under the License.
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.alibaba.weex.fr"
+    tools:context="org.apache.weex.fr"
     android:id="@+id/main_container"
     tools:showIn="@layout/app_bar_main">
 

@@ -206,7 +206,7 @@
 <manifest
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        package="com.alibaba.weex">
+        package="org.apache.weex">
     <uses-sdk android:minSdkVersion="18"
               tools:overrideLibrary="android.support.test.uiautomator.v18"/>
 </manifest>

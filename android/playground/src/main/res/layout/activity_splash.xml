@@ -22,7 +22,7 @@ under the License.
              android:layout_height="match_parent"
              android:id="@+id/container"
              android:background="#0099cc"
-             tools:context="com.alibaba.weex.SplashActivity">
+             tools:context="org.apache.weex.SplashActivity">
 
     <TextView android:id="@+id/fullscreen_content"
               android:layout_width="match_parent"

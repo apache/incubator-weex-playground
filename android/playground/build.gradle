@@ -10,7 +10,7 @@ if(!project.implementFromWeex){
 android {
     compileSdkVersion project.compileSdkVersion
     defaultConfig {
-        applicationId "com.alibaba.weex"
+        applicationId "org.apache.weex"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 20
@@ -131,7 +131,7 @@ dependencies {
 if(file('../license/LICENSE').exists()){
     license {
         header = file('../license/LICENSE')
-        excludes(["**/*.xml","com/alibaba/weex/thirdParty/zxing/*.java"])
+        excludes(["**/*.xml","org/apache/weex/thirdParty/zxing/*.java"])
     }
     preBuild.dependsOn licenseFormat
 }
