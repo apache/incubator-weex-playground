@@ -124,7 +124,7 @@ dependencies {
         implementation project(':weex_sdk')
     }
     else {
-        implementation "com.taobao.android:weex_sdk:${project.weexSdkVersion}@aar"
+        implementation "org.apache.weex:sdk_legacy:${project.weexSdkVersion}"
     }
 }
 
