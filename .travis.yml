@@ -47,6 +47,7 @@ install:
         ;;
       "ios")
         npm install
+        gem install cocoapods --no-rdoc --no-ri --no-document --quiet
         cd ios && pod install --repo-update
         ;;
     esac
