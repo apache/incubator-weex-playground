@@ -123,8 +123,8 @@
 #pragma mark weex
 - (void)initWeexSDK
 {
-    [WXAppConfiguration setAppGroup:@"AliApp"];
-    [WXAppConfiguration setAppName:@"WeexDemo"];
+    [WXAppConfiguration setAppGroup:@"Apache"];
+    [WXAppConfiguration setAppName:@"Playground"];
     [WXAppConfiguration setExternalUserAgent:@"ExternalUA"];
     
     [WXSDKEngine initSDKEnvironment];
