@@ -1,4 +1,4 @@
-# incubator-weex-playground
+# incubator-weex-playground [![Build Status](https://travis-ci.org/apache/incubator-weex-playground.svg?branch=master)](https://travis-ci.org/apache/incubator-weex-playground)
 Weex Playground is a development tool, which can be used to test and preview weex pages on Android or IOS.
 
 Find more about playground at our [website](https://weex.apache.org/guide/playground.html).
