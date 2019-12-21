@@ -13,8 +13,8 @@ android {
         applicationId "org.apache.weex"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionCode 20
-        versionName "0.20.0"
+        versionCode 21
+        versionName "0.21.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk{
