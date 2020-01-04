@@ -109,7 +109,7 @@ dependencies {
     implementation 'com.taobao.android.weex_inspection:protocol:1.1.4.1'
     implementation 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
     implementation 'com.taobao.android:weex_inspector:0.24.2.4'
-    //implementation project(":weex_inspector")
+//    implementation project(":inspector")
 
     // Bind actions to effects. See https://alibaba.github.io/bindingx/
     implementation 'com.alibaba.android:bindingx-core:1.1.1.2@aar'

@@ -2,4 +2,6 @@ rootProject.name = 'weex-playground'
 include ":playground"
 include ":commons"
 
+//include ":inspector"
+//project(":inspector").projectDir = new File("../../inspector")
 
