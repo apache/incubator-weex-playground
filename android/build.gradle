@@ -2,39 +2,24 @@
 buildscript {
     repositories {
         google()
-        maven(){
-            url 'https://maven.aliyun.com/repository/google'
-        }
-        jcenter(){
-            url 'https://maven.aliyun.com/repository/jcenter'
-        }
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.1'
     }
 }
 subprojects {
     repositories {
         google()
-        maven(){
-            url 'https://maven.aliyun.com/repository/google'
-        }
         maven() {
             url 'http://oss.jfrog.org/oss-snapshot-local/'
         }
-        jcenter(){
-            url 'https://maven.aliyun.com/repository/jcenter'
-        }
+        jcenter()
     }
     buildscript {
         repositories {
             google()
-            maven(){
-                url 'https://maven.aliyun.com/repository/google'
-            }
-            jcenter(){
-                url 'https://maven.aliyun.com/repository/jcenter'
-            }
+            jcenter()
         }
     }
 }
@@ -42,8 +27,8 @@ ext {
     compileSdkVersion=28
     minSdkVersion=14
     targetSdkVersion=28
-    supportLibVersion="26.0.2"
+    supportLibVersion="28.0.0"
     fastjsonLibVersion="1.1.46.android"
-    weexSdkVersion="0.28.0"
+    weexSdkVersion="0.29.0.1-SNAPSHOT"
     implementFromWeex = false
 }

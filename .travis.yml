@@ -8,7 +8,7 @@ matrix:
         jdk: oraclejdk8
         android:
           components:
-            - android-26
+            - android-28
             - extra-android-m2repository
       - env: TEST_SUITE=ios
         language: objective-c
@@ -58,7 +58,7 @@ script:
         echo "The value of hasAndroidFile is ${hasAndroidFile}"
         if [[ "$hasAndroidFile" =~ "hasAndroidFile" ]]; then
           cd android
-          ./gradlew clean assembleRelease --info
+          ./gradlew clean assembleRelease --quiet || exit 1
         fi
         ;;
       "ios")

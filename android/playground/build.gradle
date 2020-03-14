@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'com.android.application'
 if(!project.implementFromWeex){
-    apply from: 'https://raw.githubusercontent.com/apache/incubator-weex/release/0.28/android/sdk/buildSrc/download_jsc.gradle'
+    apply from: 'https://raw.githubusercontent.com/apache/incubator-weex/a675c3e151f3fa9339157882c4f44d7452206952/android/sdk/buildSrc/download_jsc.gradle'
 }
 
 android {
@@ -18,7 +18,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk{
-            abiFilters "arm64-v8a", "armeabi-v7a", "x86"
+            abiFilters "arm64-v8a", "armeabi-v7a", "x86", "x86_64"
         }
         if(!getBuildConfigFields()?.containsKey('externalLibraryName')) {
             buildConfigField "String", "externalLibraryName", "\"\""
